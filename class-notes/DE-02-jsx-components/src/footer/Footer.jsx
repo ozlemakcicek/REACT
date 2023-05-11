@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <div>burasi Footer</div>
+    <div style={{textAlign:"center"}}>burasi Footer</div>
   )
 }
 

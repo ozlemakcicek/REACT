@@ -1,0 +1,22 @@
+@import "./scss/button";
+@import "./scss/reset";
+@import "./scss/variable";
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+// h1{
+//     color: $turuncu;
+// }
+
+// h2{
+//     color: $yesil;
+// }
+
+// p{
+//     color: $kirmizi;
+// }
+
+//? variable bu ana scss de import edildigi icin burda da css verebilirsin ama sayfada cok sayida h lar falan varsa hepsini kirmizi yapar.bu hos olmaz.nerdekini degistireceksek oraya yapsak daha iyi tesekkr linkini koyarak

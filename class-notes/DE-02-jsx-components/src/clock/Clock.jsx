@@ -5,6 +5,7 @@ const Clock = () => {
     <div>
       <h2>
         {new Date().toLocaleString()}
+        
         {/* Geçerli veya belirtilen yerel ayarı kullanarak bir tarih ve saati bir
         dizeye dönüştürür */}
        

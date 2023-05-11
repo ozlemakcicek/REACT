@@ -13,7 +13,8 @@ import Footer from "./footer/Footer";
 function App() {
   return (
     <div >
-    {/* <Clock/> */}
+    {/* <Clock/> */}  
+    {/* Msg nin ustune Clock u yazarsak ekranda da ustunde gosterir Msg lerin.altina yazarsak altinda gosterir.fakat zaten basilan bir sayfa var Msg diye oraya da yaptirabiliriz.burayi cok doldurmayalim. */}
       <Msg/>
       <Footer/>
     </div>

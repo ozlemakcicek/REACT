@@ -9,6 +9,8 @@ import {
 } from "react-bootstrap";
 
 import resim from "../img/logo.png";
+//* local den resim yuklemek icin import unu elimiz ile biz yaziyoruz buraya. ve ona bi isim verecegiz.sonra asagida img nin src sine{} icinde o ismi yaziyoruz ki sonucu gostersin
+
 
 
 const MyNavbar = () => {
@@ -17,7 +19,7 @@ const MyNavbar = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#"> </Navbar.Brand>
+        <Navbar.Brand href="#"><img src={resim} alt="" /> </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -38,9 +40,7 @@ const MyNavbar = () => {
                 Devops
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
+           
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -59,3 +59,6 @@ const MyNavbar = () => {
 };
 
 export default MyNavbar;
+
+
+//? eger css yapacaksak tek tek folder acardik.ama css yoksa bootstrap kullanacaksak components diye bir folder olusturum dosyalari buraya koyabiliriz.
