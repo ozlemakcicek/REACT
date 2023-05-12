@@ -1,0 +1,52 @@
+@import'../../scss/variables';
+@import "../../scss/mixins";
+
+.navbar{
+    background-color: $cardNavBgColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // sabitlestirelim akarken sayfa kaymasin
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 4;
+    //z index 4 dersek asagidakiler kayinca bunun uzerinden gecmemelerini sagladik.kartlari ayarladik.alttaki kartta 3 tane yazi resim var.navbari 4.kata koyduk
+
+    .links{
+        display: flex;
+        font-size: 1.5rem;
+        justify-content: flex-end;
+        gap: 2%;
+
+        a{
+            color: $secondaryColor;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 0.5rem;
+
+            &:hover{
+                color: $cardNavBgColor;
+                background-color: $secondaryColor;
+                border-radius:5px ;
+            }
+
+        }
+
+
+img{width: 100px;
+height: 100px;}
+    }
+}
+
+@include media-xsm {
+    .links {
+        flex-direction: column;
+    }
+}
+
+@include media-lg {
+    .links {
+        flex-direction: row;
+    }
+}

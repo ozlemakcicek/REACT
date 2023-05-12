@@ -1,0 +1,17 @@
+@import './scss/reset';
+@import './scss/variables';
+@import './scss/mixins';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
+
+//* bunlari font-awesome dan getirdik.font family sini de body ve digerini de p  ye uyguladik
+
+body{
+    font-family: 'Concert One', cursive;
+    background-color: $backgroundColor;
+}
+p{
+    font-family: 'Noto Sans', sans-serif;
+}

@@ -1,0 +1,97 @@
+@import '../../scss/variables';
+
+.card-container{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+gap: 2rem;
+
+
+.cards{
+    // border: 2px solid red;
+    width: 500px;
+    height: 350px;
+    position: relative;
+
+    //?yazilardaki tasmayi yok etmek icin overflow:hidden yapiyoruz
+    overflow: hidden;
+
+
+//* card in ustune gelince yazilar yukari cikiyor ornekte o yuzden hover i buraya veriyoruz
+
+&:hover .card-over{
+    transform: translateY(0%);
+}
+
+//resimlerin uzerine gelince flue olsun diye opacity sini dusurelim
+&:hover img{
+    opacity: 0.5;
+}
+
+
+    .title{
+        position: absolute;
+        top: 0;
+        left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+        color: $cardNavBgColor;
+        font-size: 0.5rem;
+        padding: 1rem;
+        border-radius: 30px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .date{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+       //yine de istedigimiz yere gelmnedi.50% ler divin baslangic noktasi oldu.card in ortasina gelmeli.o nedenle transform:translate kullanacagiz.once bi yerini bilsin diye absolute ve top left verdik sonra ortaladik
+       transform: translate(-50%,-50%);
+       background-color: rgba(0,0,0,0.8);
+       color: $cardNavBgColor;
+       font-size: 0.5rem;
+       padding: 1rem;
+       border-radius: 10px;
+       z-index: 2;
+    }
+    
+
+
+.image{
+    width: 500px;
+    height: 350px;
+
+    // image lerin kalitesi biraz bozulabiliyor.onu duzeltmek icin object-fit:cover yap diyoruz
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-over{
+    width: 500px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: $secondaryColor;
+    padding: 1rem;
+    border-radius: 10px;
+    transform: translateY(100%);  // dusey eksende tamamen asagiya kaysin dedik
+    transition: transform 0.7s ease-in-out;
+    z-index: 3;
+    text-align: justify;
+    font-size: 1.5rem;
+    max-height: 75%;
+    overflow: auto;
+
+    //* Cardlarin icinde overflow:auto deyince bir scroll olustu.onu yok edip sadece mausun hareketi ile gitsin diye webkit-scrollbar display none yaptik
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+
+}
+
+}
+
+}

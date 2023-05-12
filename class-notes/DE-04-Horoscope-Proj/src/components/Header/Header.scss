@@ -1,0 +1,61 @@
+@import'../../scss/variables';
+@import '../../scss/mixins';
+
+
+.header{
+    text-align: center;
+    margin: 1rem;
+    padding: 0.5rem;
+    //navbari fixleyince burasi yukari cikti indirmemiz lazim
+    margin-top: 10rem;
+    
+    
+    .text-shadow{
+    
+        color: $cardNavBgColor;
+        font-size: 3rem;
+        text-transform: uppercase;
+        letter-spacing:0.2em ;
+        // em usttekini degistirince bu da degissin diye inheriti alsin diye verilir
+        text-decoration: underline;
+        //asagidaki kodu keyframe i yaptiktan sonra animasyon gecis suresini ayarlamak icin kullaniyoruz
+        animation: flicker 0.5s ease-in-out infinite alternate;
+
+
+//* yazinin ustune gelince hover vermek icin
+        &:hover{
+            color: black !important;
+            cursor: pointer;
+        }
+}
+
+// animasyon yapmak icin @keyframes kullanilir.flicker ismini kendimiz verdik.animasyon baslayinca hafif sonra belirginlessin diye 0% ve %100 anini belirliyoruz.opacitsini dusuk vermek icin 0% da opacity si 0.5 olsun rengi soyle olsun falan.%100 de de opac si 0.8 olsun dedik
+
+@keyframes flicker {
+    0%{
+        opacity: 0.5;
+        text-shadow: 2px 2px 10px;
+        color: $cardNavBgColor;
+    }
+
+    100%{
+        opacity: 0.8;
+        text-shadow: 2px 2px 10px;
+        color: $cardNavBgColor;
+    }
+// simdi yukarida animation un gecis suresini ayarlayalim
+}
+
+}
+@include media-xsm {
+    .header {
+        margin-top: 15rem;
+    }
+}
+
+@include media-lg {
+    .header {
+        margin-top: 10rem;
+    }
+}
+
