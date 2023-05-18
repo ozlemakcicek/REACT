@@ -12,7 +12,8 @@ let count=0;
 const arttir=()=>{
     count=count+1
 
-    //* return icine onclick yapinca count u arttir dedik ama gostermedi.onu ekranda da guncelle diye js alaninda document.queryselector yap fonksiyon icine.Icini degistir js alanina event ler react alanina yazilir.DataBase de kaydet dersek birde 3.asama yazmaliydik buraya
+    //* return icine onclick yapinca arttir diye bir fonksiyon yazdik.o fonksiyonu da js alaninda tanimlayip yapacagi isi yazalim. count u arttir dedik ama gostermedi.onu ekranda da guncelle diye js alaninda document.queryselector yap fonksiyon icine ve taxtcontaent=count olsun yazmaliyiz js alaninda.event ler react alanina yazilir.DataBase de kaydet dersek birde 3.asama yazmaliydik buraya.Bunlar cok uzun.React da guzel bir uygulama var.
+
 document.querySelector("span").textContent=count    
 }
 
@@ -24,17 +25,17 @@ const butonBaslik=(a)=>{
 
 }
 
-
   return (
     //!react alani
+
     <div className="container text-center mt-4">
       <h1>INFO: {baslik}</h1>
       <h2>
         COUNT:<span>{count}</span>
       </h2>
-      <button className="btn btn-primary" onClick={arttir}>
-        ARTTIR
-      </button>
+      <button className="btn btn-primary" onClick={arttir}>ARTTIR</button>
+        
+      
       {/* //!Parametreli fonksiyonlarda normal fonksiyondan farkli bir durum var.react alaninda parametreli fonksiyon çağiracaksak, fonksiyonun adinin önüne ()=> işaretini koymaliyiz, yoksa fonksiyonu event i beklemeden  çaliştiriyor */}
     
       <button className="btn btn-info" onClick={() => {butonBaslik(new Date().getFullYear())}}>

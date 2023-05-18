@@ -19,7 +19,7 @@ renk:"red"})
 // ayni butona tiklaninca bi ona bi ona degissin ister isek if yazariz fonksiyon icine
 const degistir=()=>{
  
-    if(kisi.isim=="Ozlem"){
+    if(kisi.isim==="Ozlem"){
       setKisi({
       isim: "Nihal",
       email: "nihal@hotmail.com",
