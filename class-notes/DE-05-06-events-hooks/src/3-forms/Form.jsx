@@ -64,7 +64,9 @@ const formAlindi=()=>{
             <option value="USA">USA</option>
           </select>
         </div>
-
+{/* value lar backend e giden isimler.o nedenle onemli.input yerine bootstrap ten select yapisini aldik geldik.ilk option da selected olan buton uzerinde secili olup gozuken kisim. */}
+    {/* button un type submit olursa gondeme yapar     */}
+        
         <button type="submit" className="btn btn-primary">
           GONDER submit
         </button>

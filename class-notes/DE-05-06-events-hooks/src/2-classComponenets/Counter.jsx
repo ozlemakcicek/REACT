@@ -8,9 +8,11 @@
 //* this.state ile constructor da state için bir initial value atayabiliriz. constructor  dışında, state i setState() metoduyla değiştirebiliriz,
 //* =========================================================================
 
-//? rafce nin icerik bolumunu silelim.class acalim.
+//? rafce nin icerik bolumunu silelim.class acalim.bu artik kullanilmaz.this ve bind kelimeleri kullnlr.arrow function varsa bind kelimesine gerek yok.karisik.
 import React, {Component} from 'react'
 
+
+//* burasi farz.this.state{} farz.  constructor(props) farz.  super(props) farz.  class ..extends Component{} farz
 class sayacer extends Component {
   constructor(props) {
     super(props);
