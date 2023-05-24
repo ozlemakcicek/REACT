@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: #ed5252;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+body {
+  font-family: "Poppins", sans-serif;
+
+  background-image: url("https://wallpapers.com/images/hd/white-old-paper-with-dark-stains-tlxzuvap31mxywve-tlxzuvap31mxywve.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container {
+  background-image: url("https://wallpapers.com/images/hd/blank-crumpled-paper-ce2xfk1vk85mutcp-ce2xfk1vk85mutcp.webp");
+
+  margin: 3rem auto;
+  max-width: 950px;
+  padding: 2rem;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.header {
+  text-align: center;
+  margin: 1rem;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  padding: 1rem;
+  font-size: 17px;
+  border-radius: 5px;
+  border: none;
+}
+
+/*! data daki bittiMi kısmı false iken görünecek stil */
+.falseBitmediStil {
+  display: flex;
+  justify-content: space-between;
+
+  background-image: url("https://img.freepik.com/free-vector/watercolor-background_220290-15.jpg?w=2000");
+
+  background-size: cover;
+  background-position: center center;
+  margin: 5px;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+.falseBitmediStil h2 {
+  color: green;
+}
+.falseBitmediStil h3 {
+  color: #152bbb;
+}
+/*! data daki bittiMi kısmı true iken görünecek stil */
+.trueBittiStil {
+  display: flex;
+  justify-content: space-between;
+  border-left: 10px solid #2037b9;
+  background-color: #5dd5f9;
+  padding: 10px 20px;
+}
+
+.trueBittiStil h3,
+.trueBittiStil h2 {
+  text-decoration: line-through;
+  color: blue;
+}
+.btn + h4 {
+  padding: 10px 20px;
+}
+/* ilk sayfadaki 4 doktor resmi */
+.dr {
+  display: flex;
+  gap: 2rem 1rem;
+  justify-content: center;
+}
+/* 2. sayfadaki kayıt oluştur butonu */
+.dok {
+  text-align: center;
+  background-color: #25ad69;
+  width: 300px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid #6a0707;
+  border-radius: 50px;
+}
+
+
+/* 2.sayfadan anasayfaya dönüş butonu
+.geri {
+  color: green;
+  width: 200px;
+  height: 50px;
+  font-size: 30px;
+  margin-left: 50px;
+} */

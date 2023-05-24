@@ -28,7 +28,7 @@ const formAlindi=()=>{
       <h1>FORMS (EVENTS)</h1>
 
 
-{/* backend e gondermek icin butun form u gondercegmz icin form un icine onsubmit deyip bunu bir fonksiyona esitlyrz ve o fonksiyonu yukarida tanimlayacagz */}
+{/* backend e gondermek icin butun form u gondercegmz icin form un icine onsubmit deyip bunu bir fonksiyona(handleSubmit) esitlyrz ve o fonksiyonu yukarida tanimlayacagz */}
       <form onSubmit={formAlindi}>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
@@ -77,4 +77,5 @@ const formAlindi=()=>{
 
 export default Form;
 
-//? select de de onInput olur ama onChange secmeli seylerde daha guzel olur
+//? select de de onInput olur ama onChange secmeli seylerde daha guzel olur.
+//? eger sadece baaskend e gondereceksek useState yazmaya gerk yok, sadece let isim diye degiskeni tanimlar ve onu kullaniriz ama ekrana bastirmak istersek useState kullanmaliyiz.

@@ -1,11 +1,12 @@
 import React from "react";
-import { useState } from "react";
+import { useState } from "react";  // ya da yukari React yanina yaz
 import LifeCycleMethods from "./components/LifesycleMethods.jsx";
 import "./App.css"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import OrnekUseEffect from "./components/OrnekUseEffect.jsx";
 import Clock from "./components/Clock.jsx";
+import People from "./components/useEffect-fetch-axios/people.jsx";
 
 function App() {
 //goster butonuna tiklayinca true ise false false ise true olsun diyoruz.
@@ -15,9 +16,9 @@ const[goster,setGoster]=useState(true)
     <div className="container text-center mt-4">
       {/* <LifeCycleMethods /> */}
 
-      <button className="btn btn-danger" onClick={() => setGoster(!goster)}>
+      {/* <button className="btn btn-danger" onClick={() => setGoster(!goster)}>
         GOSTER
-      </button>
+      </button> */}
 
       {/* fonksiyona gidip ugrasmayalim diye burda direkt hallettik.!goster demek ne duserse tersi olsun demek.true ise false, false ise true olsun demek.degissin surekli */}
 
@@ -30,7 +31,8 @@ const[goster,setGoster]=useState(true)
       {/* {goster && <OrnekUseEffect />} */}
 
 
-{goster && <Clock/>} 
+{/* {goster && <Clock/>}  */}
+<People/>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 // import React from "react";
 import {useState} from "react";
 
-//? icon importunda react iconu package.json a once yuklemeliyiz.sonra da hangi sayfada kullanacksan oraya tesekkr linkini import et.her bir icon icin ayri ayri edilir ya da ayni alandan aliyorsan{} icine virgulle icon adini yazarsin.asagida da componenet cagirir gibi <iconadi ile tuglayi gorursun.once yukle, sonra tesekkr et, sonra component gibi yukle nereye koymak istersen.
+//? icon importunda react iconu package.json a once yuklemeliyiz.npm install react-icons ile yapyrz bunu.sonra da hangi sayfada kullanacksan oraya tesekkr linkini import et.her bir icon icin ayri ayri edilir ya da ayni alandan aliyorsan{} icine virgulle icon adini yazarsin.asagida da componenet cagirir gibi <iconadi ile tuglayi gorursun.once yukle, sonra tesekkr et, sonra component gibi yukle nereye koymak istersen.
+//*react-icons sitesinden yuzlerce icon alani gorebilrsn.Fontawesome-5 den alirsak mesela iconlarin basinda Fa.. yazar.importunda da /fa yazar.Gameicon dan alirsan Gi...yazar basinda importunda da /gi yazar
 
 import { FaReact,FaGooglePlus } from "react-icons/fa";
 
@@ -18,7 +19,7 @@ const[inputData,setInputdata]=useState("")
 const mouseOlayi = (e) => {
     // console.log(e.pageX);
 
-    // console.log(e); onMouseMove da farenin hareketleriyle ilgili tüm bilgileri verir. e.pageX  diyerek farenin x eksenindeki konumunu gördük
+    // console.log(e); onMouseMove da farenin hareketleriyle ilgili tüm bilgileri verir. e.pageX(koca sayfadakine gore x ve y konumu demek.)  diyerek farenin x eksenindeki konumunu gördük.pageX i console.log yapinca orda gordugumuz bir bilgi
 setXekseni(e.pageX);
 setYekseni(e.pageY);
 
