@@ -1,0 +1,13 @@
+ /* kck resimlerin arkasindaki beyaz alani kaldirmak ve arka plan rengi ile tamamen birlesmesi icin: */ 
+h1{
+    mix-blend-mode: multiply;
+}
+
+/* /* box-shadow icin: */
+
+h3{
+    box-shadow: 0 10px 6px 6px black;
+    background: linear-gradient(white,red);
+}
+
+/* aciktan koyuya renk gecisi icin yukarida */
