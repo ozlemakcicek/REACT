@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-//!event-hooks tan Form.jsx ten aldık
+//!event-hooks DE-05-06 dan forms componentinden Form.jsx  ten aldık
 
 const ContactForm = () => {
   const [isim, setIsim] = useState("");

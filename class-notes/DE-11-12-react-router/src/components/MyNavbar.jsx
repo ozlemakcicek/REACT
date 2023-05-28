@@ -1,18 +1,22 @@
-
-
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../img/logo.png";
+import { Link, NavLink } from "react-router-dom";
 
-//!react-bootstrap MyNavbar component
+//!react-bootstrap MyNavbar componenti aldik
+//fakat burda Navbar-Brand var.ama biz react-router-dom kullandgmz icin ya Nav-Link ya da Link etiketi kullanmaliyiz.Navbar-Brand i silip onun yerine yazyrz.kendi yazdigimiz sayfalara gitmek icin bu ikisinden biri, internetten bir sayfaya gideceksek normal a etiketini kullaniriz.
+
+//* Nav-Link automatisc bir style ile gelir.Link ise style siz gelir.
+// Genelde Link ler Navbar da veriliyor.
+// Nvbar dan Link e cevirince Navbarin style lari gidecegi icin className ile veya style ile tekrar orda vereblrsn.
 
 const MyNavbar = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">
-          {" "}
-          <img alt="" />
-        </Navbar.Brand>
+        <Link to="/">
+          <img alt="" src={logo} />
+        </Link>
+
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -20,13 +24,44 @@ const MyNavbar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            {/* en bastaki Nav.Link(react-bootstrap den geliyor.disardaki lere mesela bir internet sayfasina yonlendirir)  Home a gidecek bunu duzenliyoruz.NavLink(bootstrap den geliyor.iceridekilere kendi olusturdugumuz sayfalara yonlendirir) diye birlestiriyoruz ve to ekleyip home yolunu belirliyoruz.sadece / yeterli..k yi sil ve yeniden yaz importu gelsin diye.sari ve mavi tugla gelir.mavi olan react-router-dom un kisi.onu seciyoruz */}
 
-            <Nav.Link href="#action1">Home</Nav.Link>
+            {/* classname olarak nav-link verirsek Home daki mavilik gider.  */}
+            <NavLink
+              className="nav-link"
+              to="/"
+              style={({ isActive }) => ({ color: isActive && "red" })}
+            >
+              Home
+            </NavLink>
 
-            <Nav.Link href="#action1">Home</Nav.Link>
+            {/* style={({})} da normal style dan farkli olarak () var.bu  normal style degil bu demek.isActive icin kullanilir demek.ilk sari suslu ve birde ikinci mavi suslu style verecegimiz suslu.isActive ? true ise yani tiklaninca fontsize 50 px olsun tiklanmadiysa hicbirsey yapmasin demek */}
 
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <NavLink
+              className="nav-link"
+              to="/teacher"
+              style={({ isActive }) => ({ backgroundColor: isActive && "red" })}
+            >
+              Teacher
+            </NavLink>
+
+            <NavLink
+              className="nav-link"
+              to="/courses"
+              style={({ isActive }) => ({ fontSize: isActive && "50px" })}
+            >
+              Courses
+            </NavLink>
+
+            <NavLink
+              className="nav-link"
+              to="/contact"
+              style={({ isActive }) => ({
+                border: isActive ? "2px solid red" : "1px solid blue",
+              })}
+            >
+              Contact
+            </NavLink>
 
             <a
               href="https://github.com/clarusway/clarusway-FS-DE-04-TR"
@@ -43,4 +78,5 @@ const MyNavbar = () => {
   );
 };
 
+//className ile de nav-link style i verilebilir.ayni sey yukaridaki Nav-Link ile
 export default MyNavbar;

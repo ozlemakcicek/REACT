@@ -1,8 +1,21 @@
 import {Container,Col,Card,Row,Button} from 'react-bootstrap'
 import data from "../data"
+
+
+import {useNavigate} from "react-router-dom";
+// Link ya da NavLink kullanmayacaksak useNavigate kullaniriz.bunu import ederiz ve onu da bir degiskene atariz
+
+
+
+
+
+
+
 const CourseCard = () => {
   //!react-bootstrap ten CourseCard componenti
   //!
+// useNavigate i bir degiskene atariz asagidaki gibi
+const navigate=useNavigate()
 
 
   return (
@@ -16,7 +29,11 @@ const CourseCard = () => {
                 <Card.Body>
                   <Card.Title>{name}</Card.Title>
                   <Card.Text>{text}</Card.Text>
+
                   <Button variant="danger"
+                  onClick={()=>navigate(`/courses/${name}`)}
+
+                  
                  
                   >DETAYLAR</Button>
                 </Card.Body>
@@ -31,3 +48,5 @@ const CourseCard = () => {
 }
 
 export default CourseCard
+
+// butona tiklayinca tiklanan kisinin adini da alarak details sayfasina gonderecek.mecburen burda degsiken adini yaziyoruz.bu url deki gonderilen degiskeni de details sayfasinda useParams ile yakala, al.

@@ -1,36 +1,56 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Container } from 'react-bootstrap'
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const TeacherDetails = () => {
+  const navigate = useNavigate();
+const {id}=useParams()
 
+//burda id lazim bize data dan.sadece id yi secebilirz.data oyle yazilmis cunku.
+const[kisi,setKisi]=useState({})
+//bu bir obje o yuzden {} koyariz useState icine.
 
+//tekrar apiden verileri cekmemiz lazim.id li cekiyoruz ki sadece o kisi nin bilgileri gelsin.
+
+// buraya async await de yazablrz.await fetch olacak tabiki.async i bir fonksiyona esitliyoruz onun icinde await fetch yapacagiz.
+
+ useEffect(() => {
+   fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+     .then((res) => res.json())
+     .then((data) => setKisi(data))
+     .catch((err) => console.log(err));
+ }, [id]);
+
+ // useEffect de [] icini bos birakablrm.Cunku zaten bu sayfaya kisi tiklaninca o kisinin id si ile geliyor ve bu sayfa tekrar calisiyor ama syntax geregi, id ye bagli olarak veri cekiyor.o yuzden [id] yazmaliyiz.yazmazsak da hata almayiz
+ 
+ console.log(kisi);
  
 
   return (
     <Container className="text-center mt-4">
       <div>
-        <h3> </h3>
-        <img
        
+        <img
+          src={`https://avatars.dicebear.com/api/avataaars/${id}.svg`}
           alt=""
           width="250px"
         />
-        <h4>{}</h4>
-        <h5>{}</h5>
-        <h5>{}</h5>
-        <h5>{}</h5>
+        <h4>{kisi.username}</h4>
+        <h5>{kisi.name}</h5>
+        <h5>{kisi.phone}</h5>
+        <h5>{kisi.email}</h5>
         <div>
-          <button class="btn btn-primary" >
-            GO BACK
-          </button>
-          <button class="btn btn-warning" >
-            GO HOME
-          </button>
+          <button className="btn btn-primary" onClick={()=>navigate(-1)}>GO BACK</button>
+          <button className="btn btn-warning" onClick={()=>navigate("/")}>GO HOME</button>
         </div>
       </div>
     </Container>
   );
 }
 
+//Go Back de bir onceki sayfanin ne oldugunu bilmedigimiz icin -1 yaziyoruz.-3 yapsan 3 sayfa one gelir.
 export default TeacherDetails
+
+
+//

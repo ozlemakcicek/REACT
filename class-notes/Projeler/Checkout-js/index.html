@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+</head>
+
+<body>
+    <h1 class="baslik text-center mt-4">Checkout</h1>
+    <div class="container mt-5">
+
+        <div class=" col-sm-12 col-md-12 col-lg-6">
+
+            <div class="card mb-3 "
+                style="max-width: 500px; background-color: rgb(227, 227, 227); border-style: none; margin-left: 2rem;">
+                <div class="row g-0">
+                    <div class="col-md-4 col-sm-6 ">
+                        <img src="./img/photo1.png" class="img-fluid rounded-3  m-3 w-100 " alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body ms-3">
+                            <h5 class="card-title">Vintage Backbag</h5>
+                            <p class="card-text fw-semibold">$ <span class="preis">54.99 </span>
+                                <span class="text-decoration-line-through text-dark">$34.99</span>
+                            </p>
+
+
+
+                            <div class=" border border-1 border-dark w-50 disabled d-flex justify-content-between">
+                                <!-- <div class="w-25 h-25 rounded-1 text-dark fw-bolder ">- </div> -->
+
+                                <button class=" btn minus  h-25 rounded-1 text-dark fw-bolder border-0">-</button>
+
+                                <div class="sayi ms-2 me-2 text-dark ps-3 pe-3">1</div>
+                                <button class=" btn plus  h-25 rounded-1 text-dark fw-bolder border-0">+</button>
+
+                            </div>
+                            <button class=" btn  buton bg-danger border-0 text-bg-secondary mt-2 ms-2 ">Remove</button>
+                            <p class="mt-2">Product Total: $<span class="urun"></span> </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row g-0">
+                    <div class="col-md-4 col-sm-6">
+                        <img src="./img/photo2.png" class="img-fluid rounded-3 m-3 w-100" alt="...">
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card-body ms-3">
+                            <h5 class="card-title">Levi Shoes</h5>
+                            <p class="card-text fw-semibold">$ <span class="preis">74.99</span>
+                                <span class="text-decoration-line-through text-dark">$54.99</span>
+                            </p>
+                            <div class=" border border-1 border-dark w-50 disabled d-flex justify-content-between">
+                                <button class="btn minus  h-25 rounded-1 text-dark fw-bolder border-0">-</button>
+                                <div class=" sayi ms-2 me-2 text-dark ps-3 pe-3"> 1</div>
+                                <button class="btn plus  h-25 rounded-1 text-dark fw-bolder border-0">+</button>
+                            </div>
+                            <button class="btn buton bg-danger border-0 text-bg-secondary mt-2 ms-2 ">Remove</button>
+                            <p class="mt-2">Product Total: $<span class="urun"></span> </p>
+
+                        </div>
+</div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-4 col-sm-6">
+                            <img src="./img/photo3.jpg" class="img-fluid rounded-3 m-3 w-100" alt="...">
+                        </div>
+
+
+                        <div class="col-md-8">
+                            <div class="card-body ms-3">
+                                <h5 class="card-title">Antique Clock</h5>
+                                <p class="card-text fw-semibold">$ <span class="preis">74.99</span>
+
+                                    <span class="text-decoration-line-through text-dark">$94.99</span>
+                                </p>
+                                <div class="  border border-1 border-dark w-50 disabled d-flex justify-content-between">
+                                    <button class="btn minus  h-25 rounded-1 text-dark fw-bolder border-0">-</button>
+                                    <div class="sayi ms-2 me-2 text-dark ps-3 pe-3  ">1</div>
+                                    <button class="btn plus  h-25 rounded-1 text-dark fw-bolder border-0 ">+</button>
+                                </div>
+                                <button
+                                    class="btn buton bg-danger border-0 text-bg-secondary mt-2 ms-2 ">Remove</button>
+                                <p class="mt-2">Product Total: $<span class="urun"></span> </p>
+                            </div>
+
+                        </div>
+                    </div>
+                        <div>
+                            <hr class=" mt-5 mb-0 ms-2 ">
+                            <div class="all">
+                                <span class="ps-2 ">Subtotal</span>
+                                <span class="no1">$<span class="tot1"></span> </span>
+
+                            </div>
+
+                            <hr class=" mt-2 mb-0 ms-2">
+                            <div class="all">
+                                <span class="ps-2  d-inline-block mb-2  ">Tax(18%)</span>
+                                <span class="no2">$<span class="tot2"></span></span>
+                            </div>
+
+                            <hr class=" mt-2 mb-0 ms-2">
+                            <div class="all">
+                                <span class="ps-2  d-inline-block mb-2  ">Shipping</span>
+                                <span class="no3">$<span class="tot3"></span> </span>
+                            </div>
+
+                            <hr class=" mt-2 mb-0  ms-2 ">
+                            <div class="all">
+                                <span class="ps-2  d-inline-block mb-2  ">Total</span>
+                                <span class="no4">$<span class="tot4"></span> </span>
+                            </div>
+
+                        </div>
+                    
+
+
+
+                
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+            crossorigin="anonymous"></script>
+        <script src="./app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+/* 
+button.btn {
+    /* margin-left: 22rem !important; */
+    /* background-color: rgb(234, 122, 24); */ 
+
+/* } */
+
+
+
+.card-text {
+    color: rgb(231, 125, 64);
+}
+
+
+
+
+.all{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1rem;
+}
+
+
+hr {
+    width: 95% !important;
+}
+
+.btn {
+    background-color: rgb(107, 104, 104);
+}
+
+.minus,.plus {
+    background-color: rgb(196, 196, 196) !important;
+    width: 20px;
+    cursor: pointer;
+
+    
+}
+
+.buton{
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 14px;
+}
