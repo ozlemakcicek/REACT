@@ -24,7 +24,7 @@ const MyNavbar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            {/* en bastaki Nav.Link(react-bootstrap den geliyor.disardaki lere mesela bir internet sayfasina yonlendirir)  Home a gidecek bunu duzenliyoruz.NavLink(bootstrap den geliyor.iceridekilere kendi olusturdugumuz sayfalara yonlendirir) diye birlestiriyoruz ve to ekleyip home yolunu belirliyoruz.sadece / yeterli..k yi sil ve yeniden yaz importu gelsin diye.sari ve mavi tugla gelir.mavi olan react-router-dom un kisi.onu seciyoruz */}
+            {/* en bastaki Nav.Link(react-bootstrap den geliyor.disardaki lere mesela bir internet sayfasina yonlendirir)  Home a gidecek bunu duzenliyoruz.NavLink(iceridekilere yani kendi olusturdugumuz sayfalara yonlendirir.Navbar daki linkler icin NavLink i kullan.Navbar daki logo yu ise Link ile ver.) diye birlestiriyoruz ve to ekleyip home yolunu belirliyoruz.sadece / yeterli..k yi sil ve yeniden yaz importu gelsin diye.sari ve mavi tugla gelir.mavi olan react-router-dom un kisi.onu seciyoruz */}
 
             {/* classname olarak nav-link verirsek Home daki mavilik gider.  */}
             <NavLink
