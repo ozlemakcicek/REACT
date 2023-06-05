@@ -3,7 +3,7 @@
 // default olarak verdigi degisken ismini sen de istedigin sekilde vereblrsin.o zaman asagidaki export u da duzelt
 
 import styled from "styled-components";
-
+//Ana still
 const HeaderS = styled.h1`
 
  color: red;
@@ -15,10 +15,11 @@ const HeaderS = styled.h1`
 
 
 
-//ayni sayfada ayni etiketten stillendirme yapacaksin ureeceksi diye bisey yok.a icin ayri bir sayfa acmaya geek yok.burda headers icinde olsun diyeblrz
+//ayni sayfada ayni etiketten stillendirme yapacaksin ureeceksi diye bisey yok.a icin ayri bir sayfa acmaya geek yok.burda headers icinde olsun diyeblrz.Ama tamamen yeni stilli istiyoruz.sadece headers in odayi kiraladik
 
 // direkt a etiketinden  turetelim.Home da gozuksun diye oraya belirtiyoruz
 
+// Yanci still
 export const LinkS=styled.a`
 color: salmon;
 font-size: 2rem;

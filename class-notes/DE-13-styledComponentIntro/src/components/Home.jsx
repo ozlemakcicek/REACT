@@ -14,11 +14,11 @@ const Home = () => {
 
         <HeaderS>STYLED COMPONENTS</HeaderS>
     
-    {/* a linkinden turetme icin href i de yazmamiz lazim */}
+    {/* a linkinden turetme icin href i de yazmamiz lazim.alttaki cizgi gitsin diye stylena text-decoration:none yaptik */}
 
 <LinkS href='#'>LINK</LinkS>
 
-{/* props gonderelim */}
+{/* props gonderelim.Herseyi ayni sadece renkleri farkli olsun istersek props gondereblrz */}
     <ButtonS ozlem>TIKLA1</ButtonS>
     <ButtonS>TIKLA2</ButtonS>
     
