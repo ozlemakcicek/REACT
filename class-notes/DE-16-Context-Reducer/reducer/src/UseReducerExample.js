@@ -22,6 +22,7 @@ const UseReducerExample = () => {
     
   });
   const { dog, loading, error } = state;
+  //state i destruction yaptik.state.loading falan yazmamak icin
 
   
   const fetchDog = () => {

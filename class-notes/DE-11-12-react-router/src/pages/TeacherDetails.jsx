@@ -10,32 +10,35 @@ const {id}=useParams()
 
 //burda id lazim bize data dan.sadece id yi secebilirz.data oyle yazilmis cunku.
 const[kisi,setKisi]=useState({})
-//bu bir obje o yuzden {} koyariz useState icine.
+//bu bir obje o yuzden {} koyariz useState icine.[] de hata vermez ama dogrusu obje o.i. {} olamli
 
 //tekrar apiden verileri cekmemiz lazim.id li cekiyoruz ki sadece o kisi nin bilgileri gelsin.
 
 // buraya async await de yazablrz.await fetch olacak tabiki.async i bir fonksiyona esitliyoruz onun icinde await fetch yapacagiz.
 
-//  useEffect(() => {
-//    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-//      .then((res) => res.json())
-//      .then((data) => setKisi(data))
-//      .catch((err) => console.log(err));
-//  }, [id]);
+ useEffect(() => {
+   fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+     .then((res) => res.json())
+     .then((data) => setKisi(data))
+     .catch((err) => console.log(err));
+ }, [id]);
 
 // url adresinin sonuna all veya users yazinca herkesi getiriyor.${id} yazarsak istedigin kisiyi getirir.Api ona gore kurgulanmis o yuzden burda mecburen id yazmaliyiz.Localden cekerken istedigin bir degiskeni yazabilirsin.
+// CardDetails de oldugu gibi props gonderip tutuyorsa diy esorgulayarak da yapilabilir ama fetch li yapida,yani api den veri cekerken bu sekilde her iki sayfada da veriyi cekmek daha uygun
 
-useEffect(()=>{
-const getVeri=async()=>{
-  const res = await axios.get(
-    `https://jsonplaceholder.typicode.com/users/${id}`)
-    setKisi(res.data)
+// get,post gibi degisiklik yapilacagi durumlarda axios kullan ama sadece veri cekme varsa fetch daha uygun
 
-} 
-getVeri();
+// useEffect(()=>{
+// const getVeri=async()=>{
+//   const res = await axios.get(
+//     `https://jsonplaceholder.typicode.com/users/${id}`)
+//     setKisi(res.data)
+
+// } 
+// getVeri();
 
 
-},[id])
+// },[id])
 
 
 

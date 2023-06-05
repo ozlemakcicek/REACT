@@ -14,7 +14,7 @@ const CardDetails = () => {
 
   const {namee} = useParams()
   // const {namee} = useParams()
-  //id nin esitini yakalayacagiz.destruction gibi yazimi.lazim olan lardan birini kullanablrsin.name,id ya da yorum gibi...
+  //id nin esitini yakalayacagiz.destruction gibi yazimi.lazim olan lardan birini kullanablrsin.name,id ya da yorum gibi...Sonra data dizisinde gezin ve benim getirdigim ile tutan varsa onu bastir diyoruz
   const navigate=useNavigate()
 
   return (

@@ -32,6 +32,8 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/teacher" element={<Teacher />} />
         <Route path="/teacher/:id" element={<TeacherDetails/>}/>   
+
+        {/* butona tiklayinca giderken datanin bir degiskeni ile giderken `/${id}` ile, router da karsilayip gonderirken /:id ile.ve sonra kendi sayfasinda da const{id}= useParams() ile karsilarsin.details sayfasi varsa hep bu durum gecerli*/}
           <Route path="/courses" element={<CourseCard />} />
 
 
