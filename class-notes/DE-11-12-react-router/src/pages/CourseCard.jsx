@@ -33,7 +33,7 @@ const navigate=useNavigate()
                   <Button variant="danger"
                   onClick={()=>navigate(`/courses/${name}`)}
 
-                  
+                  //data dan veri cekip bunu courses(yani o aslinda CardDetails syfasi) sayfasina gonderecegiz ama bu data da bir degisken oldugu icin ve biz bu degiskenin karsiligini(html kelimesini) gonderecegimiz icin,biraz degsken biraz kelime olunca backtick icinde ${} icinde yazilir.gonderme isini yalniz bu sayfa degilde App.js yapar.bu sayfa yol belirler.App.js de ise Route ile gonderirken :name diye yaziyoruz. 
                  
                   >DETAYLAR</Button>
                 </Card.Body>

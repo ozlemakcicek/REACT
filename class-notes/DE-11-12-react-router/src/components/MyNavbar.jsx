@@ -1,3 +1,9 @@
+
+// page leri Route ile(page icinde bir component varsa onda normal yolla gecis yapariz )
+// componentleri ise normal yolla yonlendirirz.navbar ise;link to,navlink to,a ile...digerlerini ise useNavigate() ile
+
+// import ederken mavi olan tuglalar react-router-dom un, sari olanlar react-bootstrapin
+
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../img/logo.png";
 import { Link, NavLink } from "react-router-dom";
@@ -6,7 +12,7 @@ import { Link, NavLink } from "react-router-dom";
 //fakat burda Navbar-Brand var.ama biz react-router-dom kullandgmz icin ya Nav-Link ya da Link etiketi kullanmaliyiz.Navbar-Brand i silip onun yerine yazyrz.kendi yazdigimiz sayfalara gitmek icin bu ikisinden biri, internetten bir sayfaya gideceksek normal a etiketini kullaniriz.
 
 //* Nav-Link automatisc bir style ile gelir.Link ise style siz gelir.
-// Genelde Link ler Navbar da veriliyor.
+// Genelde Link ler Navbar da veriliyor.to ile yolunu belirtmek lazim.Link to="/" demek tiklaninca home a git demek.to ile yolla(sadece navbar da kullanilir), App.js de de path ile bunu haber ediyoruz.yine aynisekilde path ile / geliyorsa home elementine git demek.<Route path="/" element={<Home />} />
 // Nvbar dan Link e cevirince Navbarin style lari gidecegi icin className ile veya style ile tekrar orda vereblrsn.
 
 const MyNavbar = () => {
@@ -36,7 +42,7 @@ const MyNavbar = () => {
             </NavLink>
 
             {/* style={({})} da normal style dan farkli olarak () var.bu  normal style degil bu demek.isActive icin kullanilir demek.ilk sari suslu ve birde ikinci mavi suslu style verecegimiz suslu.isActive ? true ise yani tiklaninca fontsize 50 px olsun tiklanmadiysa hicbirsey yapmasin demek */}
-
+            {/*      style={({ isActive }) => ({ color: isActive ? "red" : ""  })} bunun yerine && ile tek tarafli durumu yazabilirz  */}
             <NavLink
               className="nav-link"
               to="/teacher"
@@ -64,7 +70,7 @@ const MyNavbar = () => {
             </NavLink>
 
             <a
-              href="https://github.com/clarusway/clarusway-FS-DE-04-TR"
+              href="https://github.com/ozlemakcicek"
               className="nav-link"
               target="_blank"
               rel="noreferrer"

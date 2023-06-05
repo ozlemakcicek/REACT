@@ -23,28 +23,33 @@ const App = () => {
     <div>
       <BrowserRouter>
         <MyNavbar />
-
+{/* degiskenler icin datadan cekilen yerde yolu verilir.App.js de gonderilir.varacagi sayfa da da useParams ile yakalanir.  */}
         <Routes>
+
           {/* <Route path="/" element={<Home />} /> */}
-          {/* / (ana yol) tüm yollara dahil edilmiştir, bu nedenle onu
-         / başlayan diğer yollardan ayırt etmek için exact anahtar kelimesine sahip olması gerekir .Sadece Home icin yazilabilir yazilmayadabilir */}
+          {/* '/' (ana yol) tüm yollara dahil edilmiştir, bu nedenle onu
+         ('/') ile başlayan diğer yollardan ayırt etmek için exact anahtar kelimesine sahip olması gerekir .Sadece Home icin yazilabilir yazilmayadabilir */}
           <Route exact path="/" element={<Home />} />
           <Route path="/teacher" element={<Teacher />} />
-
-       <Route path="/teacher/:id" element={<TeacherDetails/>}/>   
+        <Route path="/teacher/:id" element={<TeacherDetails/>}/>   
           <Route path="/courses" element={<CourseCard />} />
-          {/* courses dan CardDetails sayfasina gidecegiz.burda router sini yaziyoruz.${} ile gonderilen name i burda yakaliyoruz yol olarak.bu bir degisken.fark olarak degiskenler icin : konulur onune.genelde id kullanilir.courses yazisi ve name degiskeni demek asagidaki */}
-          <Route path="/courses/:name" element={<CardDetails />} />
+
+
+          {/* courses dan CardDetails sayfasina gidecegiz.burda router sini yaziyoruz.  ${} ile yolu verilen name i burda yakaliyoruz yol olarak.bu bir degisken.fark olarak degiskenler icin : konulur onune.genelde id kullanilir.courses yazisi ve name degiskeni demek asagidaki */}
+          <Route path="/courses/:namee" element={<CardDetails />} />
           {/* <Route path="/courses/:namee" element={<CardDetails />} /> */}
-          {/* //courses degismez.App.js deki yol ne ise onun aynisi yazilmali.ama name yerine istersen osman da yazablrsn.Fakat o zaman Details sayfasinda useParams da da osman diye karsilamalisin.asagida datada gezinmede ise name olmali.cunku bu data da da oyle.namee olsaydiyi da yorumda biraktim her sayfada.*/}
+          {/* //courses degismez.App.js deki yol ne ise onun aynisi yazilmali.ama name yerine istersen osman da yazablrsn.Fakat o zaman Details sayfasinda useParams() da da osman diye karsilamalisin.App.js e gelen degisken adi ile App.js de karsilanan ayni olmak zorunda degil ama App.js den gonderilen sayfada useParams ile karsilann isim App.js dekinin aynisi olmali
+       */}
+
+
           <Route path="/contact" element={<ContactForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
-        {/* yukarida yonlendirme yaptgmz icin asagidaki Home u silmemiz lazim */}
+        {/* home sayfasi bir page oldugu icin normal yolla degil route ile yonlendirecegiz. yukarida yonlendirme yaptgmz icin asagidaki Home u silmemiz lazim */}
         {/* <Home /> */}
 
-        {/* yanlis girilen hersayfada NotFound sayfasina gidelim ve ordan da butona tiklayinca useNavigate ile home a donsun   */}
+        {/* yanlis girilen herseyde(*) NotFound sayfasina gidelim ve ordan da butona tiklayinca useNavigate ile home a donsun   */}
         <Footer />
       </BrowserRouter>
     </div>

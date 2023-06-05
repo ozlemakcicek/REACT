@@ -4,6 +4,7 @@ import devops from '../img/devops.jpeg'
 import about from '../img/about.jpeg'
 // react bootstrap de slider, carousel olarak gozukur.
 
+//publige yazilan src ler(resim) import edilmez.ama burda src klasoru altindakileri tek tek import etmeliyiz
 
 const Slider = () => {
   // !!!!!!!!!!!
@@ -23,5 +24,5 @@ const Slider = () => {
   );
 }
 
-// Carousel daki fade slaytlar soluklasarak gelsin diye verdik.
+// Carousel daki  slaytlar soluklasarak gelsin diye fade verdik.
 export default Slider

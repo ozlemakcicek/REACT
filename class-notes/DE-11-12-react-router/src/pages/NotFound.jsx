@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
 //useNavigate hook unu bir degiskene atadik.ve bunu asagida buttona onClick yapinca  "/" diyerek Home a gitsin dedik.
-// useNavigate rooter yapisinin bir elemani.disaari bir url ye gitmez.sadece kendi yazdigimiz page lere gider.
+// useNavigate rooter yapisinin bir elemani.disaari bir url ye gitmez.sadece kendi yazdigimiz page lere gider.const ile verdigimiz ismi biz veriyoruz.
+
 const navigatee=useNavigate()
 
   return (
