@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* yapıştırdığımız @tailwind base; @tailwind components; @tailwind utilities; Kodları Tailwind içerisindeki base component ve utilities classlarını kullanabileceğimizi gösteriyor.*/
+
+/** element bazında default olarak vermek istediğimiz stilleri base layer'da veriyoruz */
+@layer base {
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+}
+
+/** component/class bazında default olarak vermek istediğimiz stilleri component layer'da veriyoruz */
+@layer components {
+  .main {
+    @apply bg-fuchsia-300 min-h-screen flex justify-center items-center gap-3;
+  }
+
+  .card {
+    @apply flex flex-col justify-between items-center bg-slate-500 rounded-xl w-3/12 p-4;
+  }
+}
+
+/* /* element bazinda default olarak vermek istedigimiz stilleri base layer da verisoruz.mesela a elemntinin altindaki underline in gitmesi icin @layer base diyerek text-decoration:none diyeblrsn. */
+
+/* /? base html icin kullanilir.boylece normal css i global capta yazablrsn.butun a lar btn h1 ler gibi */
+
+/* /* /*components ise z.B. componentler icin mesela .main classi icin bir ozellik tanimlarsin. bunu da @apply ile yapariz */
+
+/* boylece tek tek yazmak yerine toplu yazdik */
