@@ -3,8 +3,13 @@
 @tailwind utilities;
 /* yapıştırdığımız @tailwind base; @tailwind components; @tailwind utilities; Kodları Tailwind içerisindeki base component ve utilities classlarını kullanabileceğimizi gösteriyor.*/
 
-/** element bazında default olarak vermek istediğimiz stilleri base layer'da veriyoruz */
+/** element bazında default olarak vermek istediğimiz stilleri base layer'da veriyoruz.normal css gibi de yazablrz @apply ile de yazablrz. */
 @layer base {
+
+  a{
+    text-decoration: none;
+    color: black;
+  }
 
   h1 {
     font-size: 2rem;
@@ -15,7 +20,7 @@
   }
 }
 
-/** component/class bazında default olarak vermek istediğimiz stilleri component layer'da veriyoruz */
+/** component/class bazında default olarak vermek istediğimiz stilleri component layer'da veriyoruz.@apply kullanmmaliyiz */
 @layer components {
   .main {
     @apply bg-fuchsia-300 min-h-screen flex justify-center items-center gap-3;
