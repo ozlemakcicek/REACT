@@ -1,3 +1,30 @@
+//! firebase methodlarini sitesinden bulabilirsin.
+
+//* A-Get Started da 4 methodu var
+
+//? 1-Nasil baslatacagiz? firebase.jsx dosyasina asagidaki 3 methodu alip siteden koyuyoruz.bunlar icine auth almiyor.ama diger butun firebase methodlari alir.diger methodlari ise Context dosyamizda yazacagiz
+
+//! const app = initializeApp(firebaseConfig);
+//! export const auth = getAuth(app);
+//! const analytics = getAnalytics(app);
+
+//? 2- kullanici kayit islemi(register)
+//! createUserWithEmailAndPassword(auth, email, password)
+
+
+//? 3-log in yapma methodu
+//! signInWithEmailAndPassword(auth, email, password)
+
+//? 4-user in durumunu kontrol eden ve ona gore state i degistiren method
+//! onAuthStateChanged(auth, (user) 
+
+//* B- password authentication bolumunden
+
+//? log out olma methodu
+//! signOut(auth
+
+
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 //navbar i yine interaktif degilse(hareketli deglse) yuklemeden tailwind in dokumentation kismindan using rreact dan npm install @.... olan kod ile yukluyoruz
 
@@ -7,6 +7,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 
 import avatar from "../assets/icons/avatar.png";
+import { AuthContex } from "../context/AuthContext";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,8 +19,11 @@ function classNames(...classes) {
 
 //*face olarak bir currentUser tanimlayip ismini de,displayName i de  gostersin diyebiliriz
 
+//! Authcontext de kullandigimiz logOut methodunun calismasi icin navbar daki log out span ine onClick yapinca calissin diyecegiz.ama once useContext i fonksiyon icinde cagirip, hangi Contexti(birden fazla olabilir cunku) cagiracagimizi yazip, import edip logOut u ordan cekecegiz
 export default function Navbar() {
-  const currentUser = { displayName: "özlem akcicek" };
+  const {logOut, currentUser} = useContext(AuthContex)
+  // const currentUser = { displayName: "özlem akcicek" };
+  //?userObserveri statik kullaniyoruz o yuzden kullanici ismi hep özlem diye gozukuyor.bunu dinamik yapalim.AuthContex den currentUseri da gonderelim ve burda useContext de currentUseri da dinamik bir sekilde alabilirz
   return (
     <>
       <Disclosure
@@ -33,15 +37,17 @@ export default function Navbar() {
             </Link>
             <div className="absolute inset-y-0 right-0 flex items-center ">
               {/*currentUser in displayName ini gostersin diyecegiz  */}
-              {currentUser && <h5 className="mr-2 capitalize">{currentUser.displayName}</h5>}
+              {currentUser && <h5 className="mr-2 capitalize">{currentUser?.displayName}</h5>}
 
               {/* Profile dropdown kismi */}
               <Menu as="div" className="relative ml-3">
                 <div>
                   <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+
                     <span className="sr-only">Open user menu</span>
-                    <img className="h-8 w-8 rounded-full" src={avatar} referrerPolicy="no-referrer" alt="" />
-                    {/* referrerPolicy="no-referrer icon bazen gelmeyebilir onu engellemek icin" */}
+
+                    <img className="h-8 w-8 rounded-full" src={currentUser?.photoUrl || avatar} referrerPolicy="no-referrer" alt="" />
+                    {/* referrerPolicy="no-referrer icon bazen gelmeyebilir onu engellemek icin.option? ise currentUser varsa PhotoUrl sine bak demek */}
                   </Menu.Button>
                 </div>
 
@@ -81,16 +87,17 @@ export default function Navbar() {
                         </Link>
                       )}
                     </Menu.Item>
-                    {/* sign out u Lunk e cevirmeye gerek yok.span yapablrz.role button ekleyerek uzerine gelince cursor ozelligi olsun deriz.baze gostermez tailwind den dolayi o zaman da className ine elimizle ekleriz cursoru */}
+                    {/* sign out u Link e cevirmeye gerek yok.span yapablrz.role button ekleyerek uzerine gelince cursor ozelligi olsun deriz.baze gostermez tailwind den dolayi o zaman da className ine elimizle ekleriz cursoru */}
                     <Menu.Item>
                       {({ active }) => (
                         <span
                          role="button"
                           className={classNames(
                             active ? "bg-gray-100" : "",
-                            "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
-                            
+                            "block px-4 py-2 text-sm text-gray-700 cursor-pointer"                          
                           )}
+
+                          onClick={()=>logOut()}
                         >
                         Log out
                         </span>

@@ -30,8 +30,17 @@
 //             <div className="ust d-flex ">
 //               <img className="pic" src={eleman.picture.large} alt="" />
 
-            
+   
 
+//! axios un birde axios ..then..catch methodu var
+
+// const getMovies = (API) => {
+   
+//   axios
+//     .get(API)
+//     // .then((res) => console.log(res))
+//     .then((res) => setMovie(res.data.results))
+//     .catch((err) => console.log(err))
 
 
 //! Local deki Database den veri cekerken DE-!0-Appointment a bak:
