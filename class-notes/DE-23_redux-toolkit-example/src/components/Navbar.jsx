@@ -1,3 +1,6 @@
+//! material UI --> get started-->Components-->App Bar dan  bu Navbar i getirip duzeltmeleri yaptik.Button da iki durum var(log in log out) o yuzden bir fonksiyon olmali orda.importlari yap
+
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';

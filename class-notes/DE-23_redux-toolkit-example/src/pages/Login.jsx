@@ -1,3 +1,7 @@
+//!  material UI dan tek tek aliyoruz.Avatar,Typography(yazi,baslik),TextField(input),Button,Typography,Link den alip gelip olusturuyoruz.Container ve altinda da box ile sarmalliyoruz.importlarini yapiyorz
+//*kullanici olustur sonra da kullanici bilgilerini sil.log in olduktan sonra bir dizi lazim ki apiden cekilen verileri atmak icin, sonra getData fonksiyonu lazim axios icin,ve loading degiskenine ihtiyac var.ayni sayfada da yapilabilir ama ayri sayfada yapacagiz
+
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -17,14 +21,15 @@ export default function Login() {
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
 
-//* asagida ikisi de ayni yerden gelecegi icin ayri ayri yazilabilecegi gibi ortak seylerde {} icinde yaz bunlari ve let ile yaz.obje o.i. ve degisecegi icin const yazilmaz objelöerde.dizilerde oluyor reactta.Bunlar bir degisken oldugu icin useSelector kullanilir.Fonksiyonlarda useDispatch kullanilir
 
+//* asagida ikisi de ayni yerden gelecegi icin ayri ayri yazilabilecegi gibi ortak seylerde {} icinde yaz bunlari ve let ile yaz.obje o.i. ve degisecegi icin const yazilmaz objelerde.dizilerde oluyor reactta.Bunlar bir degisken oldugu icin useSelector kullanilir.Fonksiyonlarda useDispatch kullanilir
 
   // let email= useSelector((state)=>state.yetkiSlice.email)
   // let password= useSelector((state)=>state.yetkiSlice.password)
   
  let { email, password } = useSelector((state)=>
   state.yetkiSlice);
+  console.log(email);
 
  const navigate=useNavigate()
  //olusturKullanici bir fonksiyon onu useDispoatch ile gonderecegiz icinde email ve password u da alacak sekilde.birden fazla gonderilecek var ise {} icinde olmali

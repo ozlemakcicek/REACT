@@ -9,7 +9,7 @@
 
 // burda toDoList (oyuncu) de temizle diye bir fonksiyon isteginde bulundu, onu burda reducer dan alalim
 // {} icinde olamasi obje mantiginin disinda type ve payload almasi
-
+// input ve temizle icin aracilik yaptik asagida.oyuncudaki fonksiyonlari al burda type ver lazimsa payload kullan ve bunlari reducer sayfasinda kullan
 export const temizle=()=>({type:"TEMIZLE"})
 
 export const ekle=(veri)=>({type:"EKLE", payload:veri})

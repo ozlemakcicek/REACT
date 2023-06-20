@@ -1,3 +1,6 @@
+//! Mui den Card getiriyoruz
+
+//! veriler gelmeden once bir loading iconu gozuksun, veriler gelince resimler gozuksun,loading iconu gitsin
 
 //! haberSlice da Data dan verileri cekme fonksiyonunu yazdik ama burda bastiriyoruz
 

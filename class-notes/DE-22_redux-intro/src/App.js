@@ -36,11 +36,9 @@ function App() {
 
   //! 1-once createStore u olusturalim(el ile yazinca bu kod.kitt den alinca baska birsey yazacagiz).const store dememiz sart baska isim olmuyor.redux i harekete geciren cumle bu.Icine reducer kactane ise yazabilirsin veya degsikene atayip sadece ismini yazblrsn)actigimiz bu alani ekranda gorecegimiz cocuklari sarmallayan Provider ile gonderecegiz
 
-
-  
   const store = createStore(topluReducer);
 
-  // yukaridaki store lari gonderiyoruz.Burda aslinda en tepe App.js de dedikki Reducerlari butun sayfalar gorebilsin.sarmallama ile yaptik bunu
+  //! 2- yukaridaki store lari gonderiyoruz.Burda aslinda en tepe App.js de dedikki Reducerlari butun sayfalar gorebilsin.sarmallama ile yaptik bunu
   return (
     <div className="app">
       <Provider store={store}>

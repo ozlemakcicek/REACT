@@ -1,3 +1,5 @@
+//! App.js de AppRouter a git demisiz.burda da butun yonlendirmeleri yapalim 
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
@@ -10,9 +12,9 @@ const AppRouter = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<PrivateRouter />}>
+        {/* <Route path="/" element={<PrivateRouter />}>
           <Route path="" element={<News />} />
-        </Route>
+        </Route> */}
         <Route path="/" element={<News />} />
         <Route path="/login" element={<Login />} />
       </Routes>
