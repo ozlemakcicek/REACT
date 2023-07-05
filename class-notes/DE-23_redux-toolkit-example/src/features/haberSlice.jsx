@@ -1,9 +1,10 @@
-//!api den veri cekmek icin gerekli fonksionun yazildigi sayfa burasi
+//!api den veri cekmek icin gerekli fonksiyonun yazildigi sayfa burasi
 //*burdaki haber sitesinin adresini ve kendi verdigi API KEYI kullanabilirsin
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
 
+//!api den veri cekmenin iki sarti var.birisi createAsyncThunk ile bu kisim.digeri asagidaki extraReducers
 export const getData=createAsyncThunk(
 "haberSlice/getData",
 
@@ -25,6 +26,7 @@ return data.data.articles
      loading: true,
    },
    reducers: {},
+   //!asagidaki kisim veri cekmek iicn sart.sadece kendi fonksiyonun ne ise onun adiniu degistri.bizimkisi getData idi
    extraReducers: (builder) => {
      builder
        .addCase(getData.pending, (state) => {

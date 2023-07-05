@@ -1,0 +1,41 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import React from "react";
+import Register from "../pages/Register";
+
+import Dashboard from "../pages/Dashboard";
+import NavBar from "../components/NavBar";
+import Login from "../pages/Login";
+import FooTer from "../components/FooTer";
+import PrivateRouter from "./PrivateRouter";
+import Detail from "../pages/Detail";
+import About from "../pages/About";
+import NewBlog from "../pages/NewBlog";
+import Profile from "../pages/Profile";
+import NotFound from "../pages/NotFound";
+import Card from "../components/blog/Card";
+
+const AppRouter = () => {
+  return (
+    <Router>
+      <NavBar />
+
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+        <Route path="about" element={<About />} />
+        <Route path="profile" element={<Profile />} />
+
+        <Route path="app" element={<PrivateRouter />}>
+          <Route path="detail/:id" element={<Detail />} />
+          <Route path="newblog" element={<NewBlog />} />
+        </Route>
+      </Routes>
+      <FooTer />
+    </Router>
+  );
+};
+
+export default AppRouter;

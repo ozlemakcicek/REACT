@@ -1,3 +1,5 @@
+//! componente props gonderme mantigi ile yapiyoruz.yup kullanmiyoruz o yuzden yup ifadelerini siliyorz.ama importlar yine yup tan
+
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -26,7 +28,8 @@ export const registerSchema = object({
     .oneOf([ref("password"), null], "Passwords must match")
     .required("Confirm password zorunludur!"),
 });
-
+//Register sayfasindan callback yerine props ile gonderilen olmasi gerekne degerleri karsilayip asagida kullanalim.
+// inputlarda value lar formun bosalmasina  neden olur.peki nerden gelecek bu value?kendimiz yazmiyoruz bunlari.Formik in props olarak verdigi callback function dan aldigimiz values, handleChange,errors.. dan yakaliyoruz bu degerleri.
 const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
   return (
     <div>
@@ -38,10 +41,10 @@ const SignUpForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             id="userName"
             type="text"
             variant="outlined"
-            value={values.username}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.username && errors.username}
+            value={values.username} // name e gore yaziyoz bunlari
+            onChange={handleChange} // kullncnin girdgi degeri yakalr
+            onBlur={handleBlur} // kullncnin input alannindan ayrildigini yakalaylm 
+            helperText={touched.username && errors.username} // birsuru input o.i.helpertext i statik yazamayiz.dinamik olmali ve kirmizi yazsin diye error u da kullaniyorz
             error={touched.username && Boolean(errors.username)}
 
             //!neden boolean degerini aldik?password zorunludur gibi bir mesaj degilde burdan donen string ya da bos ifadenin true ya da false halini versin. yukaridaki tanimlanan validation larda hata varsa burasi false dondurur ve kirmizi renge burunur.

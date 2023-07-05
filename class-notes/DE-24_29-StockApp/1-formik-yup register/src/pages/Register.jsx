@@ -1,3 +1,8 @@
+//!ilk yapacagimiz islem Register islemi.App doc dan create register deyip url i ve body yi alip postmane gidelim.istek post o.sekilde body raw Json yap ve body icin istenenleri doldur ve send yap.burdan donen Token bilgisini her sayfa icin kullanaacagiz
+
+//! 3 sekilde Registr sayfasi olusturulur.1-Bu sayfada yapildigi gibi Formik icinde  yapilir hersey. 2- en guzeli olan ayri bir component olusturup(RegisterForm) schema ve form yapisini orda olusturmak ve register sayfasinda bunlari kullanmak ve Formik in ana yapisinin kalmasi  3-useFormik diye hook olusturarak yapmak
+
+
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
@@ -11,8 +16,10 @@ import { Box, Button, TextField } from "@mui/material";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import useAuthCall from "../hooks/useAuthCall";
+
+//*rafce ile sayfayi kur.return alanini sil
 //*Formik yaz ve acmali kapamali etiketi koy.ve sitesinden import unu getir.icine initialValues yaz ve kendi apikeyin ile acilan API den account dan register create yapisini sol taraftan al getir 
-// Schemayi da getir importu ile beraber
+//* Schemayi da getir importu ile beraber
 
 
 
@@ -96,16 +103,17 @@ const Register = () => {
             }}
             validationSchema={SignupSchema}
             onSubmit={(values, actions) => {
-              //! onSubmit i de siteden getir.values degerleri verir.birde action ekliyorz o da yapacgmz islemleri temsl eder.
+              //! onSubmit i de siteden getir.values demek ustteki inintialValues lari yakala demek submit yapinca.birde action ekliyorz o da yapacgmz islemleri temsl eder.
+
               //!submit işlemi gerçekleştiğinde yapmasını istediğimiz işlemleri buraya yazıyoruz.ve sonra formu resetlemek icin actions.resetForm() yaziyorz
 
               console.log(values);
-              register(values)// customer hook islemleri sonrasi yazdik.Artik kullaniciyi ana sayfaya yonlendirelim navigate ile
+              register(values); // customer hook islemleri sonrasi yazdik.Artik kullaniciyi ana sayfaya yonlendirelim navigate ile
               actions.resetForm();
             }}
           >
-          {/* 1.yol kapsayici arasina CallBack funktion acip formigin bize verdigi methodlari icerde kullaniyoruz. //! 2.yol ise yine formik icinde initialValues,validationSchema ve onSubmit yapip, Callback yerine componentmantiginda propslari alip bir RegisterForm componenti olusturup oraya gonderiyorz.boylece bir alt componente gondereblyrz.daha clean.bunu 2-login logout folder inda yapiyoruz
-          //? useFormik hooku ile kullanimk var birde. ikinci yontem tercih ediliyor daha cok*/}
+          {/* 1.yol kapsayici arasina CallBack funktion acip formigin bize verdigi methodlari icerde kullaniyoruz. //! 2.yol ise yine formik icinde initialValues,validationSchema ve onSubmit yapip, Callback yerine componentmantiginda propslari alip bir RegisterForm componenti olusturup oraya gonderiyorz.boylece bir alt componente gondereblyrz.daha clean.bunu 2-login logout folder blumunde 2.bolumde yapiyoruz
+          //?3- useFormik hooku ile kullanimk var birde. ikinci yontem tercih ediliyor daha cok*/}
             {({
               values,
               errors,
@@ -114,7 +122,8 @@ const Register = () => {
               handleBlur,
               handleSubmit,
             }) => (
-              <Form>
+              {/* <Form yazip importunu formikden yapip arasina mui den  yapina uygun text field lerden birini al. */}
+              <Form> 
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
                     id="username"

@@ -64,6 +64,8 @@ const Register = () => {
               actions.setSubmitting(false);
             }}
             //! 2.yontem olarak,eger objenin icindeki btn verileri gondereceksek, callback yerine alt bir componente degerleri gondermeyi yapiyorz.component seklinde propslari RegisterForm componentine gondermeyi..props seklinde yaziyoruz ve importunu yapioruz yukarida.o componente gidelim 
+            //* boylece Formik arasina birsey yazmaya gerek kalmadan daha clean bir cod yazariz.props mantigi ile Formik icinde sitesindeki ne varsa demek(callback icindekiler de dahil)
+            
             component={props => <RegisterForm {...props} />}></Formik>
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/">Do you have an account?</Link>

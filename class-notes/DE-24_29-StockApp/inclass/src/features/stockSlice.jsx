@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const stockSlice = createSlice({
   name: "stock",
-  
+
   initialState: {
     loading: false,
     error: false,
@@ -15,7 +15,7 @@ const stockSlice = createSlice({
     //! statelerimizin isimleri ile endpointlerimizin isimlerini aynı verdik. Bunun sebebi tek bir reducerla tüm stateleri dinamik bir şekilde doldurabilelim.
   },
   reducers: {
-    fetchStart: state => {
+    fetchStart: (state) => {
       state.loading = true;
       state.error = false;
     },
@@ -25,8 +25,31 @@ const stockSlice = createSlice({
       state.loading = false;
       state[payload.url] = payload.data; // state["firms"], state["brands"] anlamlarına gelerek tek bir reducerla tüm stateleri doldurabilmiş olduk.
     },
-
-    fetchFail: state => {
+    getProCatBrandSucces: (state, { payload }) => {
+      state.loading = false;
+      state.products = payload[0];
+      state.brands = payload[1];
+      state.categories = payload[2];
+    },
+    getProPurcFirBrandsSucces: (state, { payload }) => {
+      state.loading = false;
+      state.products = payload[0];
+      state.purchases = payload[1];
+      state.firms = payload[2];
+      state.brands = payload[3];
+    },
+    getProSalBrandsSucces: (state, { payload }) => {
+      state.loading = false;
+      state.products = payload[0];
+      state.brands = payload[1];
+      state.sales = payload[2];
+    },
+    getPurcSalesSucces: (state, { payload }) => {
+      state.loading = false;
+      state.purchases = payload[0];
+      state.sales = payload[1];
+    },
+    fetchFail: (state) => {
       state.loading = false;
       state.error = true;
     },
@@ -37,6 +60,10 @@ export const {
   fetchStart,
   getSucces,
   fetchFail,
+  getProCatBrandSucces,
+  getProPurcFirBrandsSucces,
+  getProSalBrandsSucces,
+  getPurcSalesSucces,
 } = stockSlice.actions;
 export default stockSlice.reducer;
 
