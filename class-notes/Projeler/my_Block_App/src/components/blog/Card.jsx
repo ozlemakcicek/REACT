@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Avatar,
@@ -19,40 +19,77 @@ import { useNavigate } from "react-router-dom";
 import authSlice from "../../features/authSlice";
 import { useSelector } from "react-redux";
 import { toastWarnNotify } from "../../helper/ToastNotify";
+import useBlogCalls from "../../hooks/useBlogCalls";
+
+
 
 const BlogCard = ({ blog }) => {
-  const { currentUser } = useSelector(state => state.auth);
+  const { currentUser } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   const currentDate = new Date();
   const formattedDate = currentDate.toDateString();
 
-  const handleClickRM = (id) => {
-    if (!currentUser) { 
-      navigate("/login")
-       toastWarnNotify("You must be logged in!");
+  const { postLike } = useBlogCalls();
+  
+const [isClicked,setClicked]=useState(false);
+
+
+  const handleClickLike = () => {
+    postLike(blog?.id);
+  
+      (!currentUser? navigate("/login"): setClicked(!isClicked))
      
+    
+  };
+
+
+  const handleClickRM = (idm) => {
+    console.log(currentUser);
+    console.log(idm);
+    if (!currentUser) {
+      navigate("/login");
+      toastWarnNotify("You must be logged in!");
     } else {
-     navigate(`/app/detail/${id}`);
+      navigate(`/app/detail/${idm}`);
     }
   };
+
+
   return (
     <Card
       sx={{
-        overflow: "hidden",
-        width: "400px",
-        height: "50rem",
+        width: 370,
+        height: 580,
         marginTop: "4rem",
         marginLeft: "2rem",
         marginBottom: "8rem",
+        cursor: "pointer",
       }}
     >
-      <CardMedia component="img" image={blog.image} alt="adas" />
+      <CardMedia
+        component="img"
+        image={blog?.image}
+        alt="adas"
+        height="200"
+        sx={{ objectFit: "contain", py: 2 }}
+      />
 
-      <CardHeader title={blog.title} />
+      <CardHeader title={blog?.title} />
 
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            overflow: "hidden", // tasan icerigi gizler
+            textOverflow: "ellipsis", //tasan metni kirpip (...) ile gosterir
+            display: "-webkit-box",
+            WebkitLineClamp: "2",
+            WebkitBoxOrient: "vertical",
+            
+          }}
+        >
           {blog.content}
         </Typography>
       </CardContent>
@@ -61,35 +98,44 @@ const BlogCard = ({ blog }) => {
       <CardContent sx={{ display: "flex", alignItems: "center" }}>
         <Avatar
           src="/broken-image.jpg"
-          sx={{ width: "30px", height: "30px", marginLeft: "10px" }}
+          sx={{ width: "30px", height: "30px",marginRight:"10px" }}
         />
-        <CardHeader subheader="admin" />
+        <Typography>{blog.author}</Typography>
       </CardContent>
 
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          color={isClicked ? "error" : "default"}
+          onClick={handleClickLike}
+        >
           <FavoriteBorderIcon />
+          <Typography variant="h4">{blog?.likes}</Typography>
         </IconButton>
+
         <IconButton aria-label="add to favorites">
           <ChatBubbleOutlineIcon />
+          <Typography variant="h4">{blog?.comment_count}</Typography>
         </IconButton>
 
         <IconButton aria-label="add to favorites">
           <RemoveRedEyeIcon />
+          <Typography variant="h4">{blog?.post_views}</Typography>
         </IconButton>
 
         <Button
           type="submit"
-          fullWidth
+        
           sx={{
-            bgcolor: "lightgreen",
+            height:"3rem",
+            width:"18rem",
+            bgcolor: "orange",
             color: "black",
             fontWeight: "600",
-            marginLeft: "5rem",
-            ":hover": { bgcolor: "lightgreen" },
+            marginLeft: "3rem",
+            ":hover": { bgcolor: "orange" },
           }}
           onClick={() => handleClickRM(blog.id)}
-         
         >
           Read More
         </Button>

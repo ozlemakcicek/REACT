@@ -21,36 +21,17 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
 
-  //Custom hook a tasiyalim
-  //  const getCards = async () => {
-  //    dispatch(fetchStart());
-
-  //    try {
-  //      const { data } = await axios.get(`${BASE_URL}api/blogs/`, {
-  //        headers: { Authorization: `Token ${token}` },
-  //      });
-  //      dispatch(getSucces({ data, url: "cards" }));
-
-  //      console.log(data);
-  //    } catch (error) {
-  //      dispatch(fetchFail());
-  //      console.log(error);
-  //    }
-  //  };
-
-  //  useEffect(() => {
-  //    getCards();
-  //  }, []);
 
   const { getBlogData } = useBlogCalls();
-  const {blogs}=useSelector(state=>state.blog)
+  
 
 
 
    useEffect(() => {
      getBlogData("blogs");
    }, []);
-
+   const {blogs}=useSelector(state=>state.blog)
+console.log(blogs);
  return (
    <>
      <Grid container>

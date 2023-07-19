@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 import { Form } from "formik";
+import { useNavigate } from "react-router-dom";
 import { object, string } from "yup";
 
 export const loginScheme = object({
@@ -13,6 +14,9 @@ export const loginScheme = object({
 });
 
 const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
+  
+  const navigate=useNavigate()
+  
   return (
     <Form>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -44,11 +48,12 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           variant="contained"
           type="submit"
           sx={{
-            bgcolor: "lightgreen",
+            bgcolor: "lightGrey",
             color: "black",
             fontWeight: "600",
-            ":hover": { bgcolor: "lightgreen" },
+            ":hover": { bgcolor: "grey" }
           }}
+         
         >
           SIGN IN
         </Button>

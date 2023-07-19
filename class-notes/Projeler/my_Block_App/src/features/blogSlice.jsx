@@ -7,40 +7,80 @@ import React from 'react'
 const blogSlice = createSlice({
   name: "blog",
 
-
   initialState: {
-    loading: false, 
-    error:false,
+    loading: false,
+    error: false,
     blogs: [],
-    categories:[],
-    comments:[],
-    likes:[],
-  
-
+    categories: [],
+    comments: [],
+    like: "",
+    detail: [],
+    userDetail: [],
+    id:"",
+   
   },
   reducers: {
-     fetchStart: (state) => {
+    fetchStart: (state) => {
       state.loading = true;
       state.error = false;
     },
-    // brandsSuccess,
-    // firmsSuccess,
+
     getSucces: (state, { payload }) => {
       state.loading = false;
-      state[payload.url] = payload.data; // state["firms"], state["brands"] anlamlarına gelerek tek bir reducerla tüm stateleri doldurabilmiş olduk.
+      state[payload.url] = payload.data;
     },
-    
+
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;
     },
 
+    postLikeSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.like = payload;
+    },
+
+    getDetSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.detail = payload;
+    },
+
+    getCommentSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.comments = payload;
+    },
+
+    getCategorySuccess: (state, { payload }) => {
+      state.loading = false;
+      state.categories = payload;
+    },
+
+    getNewBlogSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.blogs = [...state.blogs, { ...payload }];
+    },
+
+    // getBlogDetailData:(state,{payload})=>{
+    //   state.loading=false;
+    //   state.values=payload;
+    // },
+    getUserSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.userDetail=payload;
+    },
   },
 });
 
 export const {
   fetchStart,
-getSucces,
+  getSucces,
   fetchFail,
+  postLikeSuccess,
+  getDetSuccess,
+  getCommentSuccess,
+  getNewBlogSuccess,
+  getCategorySuccess,
+  getBlogDetailData,
+  getUserSuccess,
 } = blogSlice.actions;
 export default blogSlice.reducer;

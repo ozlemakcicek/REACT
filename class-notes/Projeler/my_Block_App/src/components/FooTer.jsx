@@ -6,17 +6,18 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 const FooTer = () => {
     
   return (
-    <Box>
+    <Box component="footer">
       <BottomNavigation>
         <h3
           style={{
-            backgroundColor: "lightgreen",
+            backgroundColor: "orange",
             height: "50px",
+            marginTop:"2rem",
             textAlign: "center",
             width: "100%",
           }}
         >
-          Copyright © Developed By Özlem
+          Copyright © Developed By Özlem {new Date().getFullYear()}
         </h3>
       </BottomNavigation>
     </Box>

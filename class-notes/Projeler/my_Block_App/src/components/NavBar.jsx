@@ -13,12 +13,13 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import MyImage from "../assets/clarusway_LOGO_tek_png.png";
+import MyImage from "../assets/influencer-g45b0f636a_1280.jpg";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import useAuthCalls from "../hooks/useAuthCalls";
-// import MyFoto from "../assets/1671227414889.jpg";
+import MyFoto from "../assets/OIF.jpg";
+import { toastWarnNotify } from "../helper/ToastNotify";
 
 // const pages = ["DASHBOARD","NEW BLOG", "ABOUT"];
 
@@ -26,35 +27,52 @@ import useAuthCalls from "../hooks/useAuthCalls";
 
 const pages = [
   {
-    
     title: "Dashboard",
     url: "/",
   },
   {
-  
-    title:"About",
+    title: "About",
     url: "/about",
   },
   {
-   title:"NewBlog",
+    title: "NewBlog",
     url: "/app/newblog",
   },
-]
+];
 
+const settings = [
+  {
+    title: "My Blogs",
+    url: "/myblog",
+  },
+  {
+    title: "Profile",
+    url: "/profile",
+  },
+  {
+    title: "Logout",
+    url: "/",
+  },
+];
 
-
-
-
-
+const current = [
+  {
+    title: "Register",
+    url: "/register",
+  },
+  {
+    title: "Login",
+    url: "/login",
+  },
+];
 
 function Navbar() {
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(false);
 
-const {currentUser}=useSelector(state=>state.auth);
-
-const {login,logout}= useAuthCalls()
+  const { currentUser } = useSelector((state) => state.auth);
+ const {image}=useSelector((state)=>state.auth)
+  const { logout } = useAuthCalls();
 
   const navigate = useNavigate();
 
@@ -73,24 +91,51 @@ const {login,logout}= useAuthCalls()
     setAnchorElUser(null);
   };
 
-  
+  const handleClickSettings = (a) => {
+    if (a.title === "Logout") {
+      logout();
+    } else {
+      navigate(a.url);
+    }
+  };
+
+  const handleClickPages = (page) => {
+    if (!currentUser && page.title === "New Blog") {
+      navigate(page.url);
+      toastWarnNotify("You must be logged in!");
+    } else {
+      handleCloseNavMenu();
+      navigate(page.url);
+    }
+  };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "lightgreen" }}>
-      
+    <AppBar position="static" sx={{ bgcolor: "orange" }}>
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img
-            src={MyImage}
-            alt={MyImage}
-            style={{
-              width: 80,
-              height: 80,
-              paddingLeft: "10px",
-              paddingRight: "20px",
+          <Box
+            sx={{
+              display: {
+                xs: "flex",
+                md: "flex",
+                lg: "flex",
+                cursor: "pointer",
+              },
             }}
-          />
+          >
+            <img
+              src={MyImage}
+              alt="MyImage"
+              style={{
+                width: 100,
+                height: 80,
+borderRadius:"0% 40%",
+                paddingRight: "20px",
+              }}
+              onClick={() => navigate("/")}
+            />
+          </Box>
 
-          {/* KUCUK EKRANDAKI ICIN */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -102,6 +147,7 @@ const {login,logout}= useAuthCalls()
             >
               <MenuIcon />
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -121,19 +167,29 @@ const {login,logout}= useAuthCalls()
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.url} onClick={()=>navigate(page.url)}>
-                  <Typography textAlign="center">{page.title}</Typography>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                  <Typography
+                    textAlign="center"
+                    onClick={() => handleClickPages(page)}
+                  >
+                    {page.title}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
           {/* kucuk ekranda */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex", cursor: "pointer" },
+            }}
+          >
             {pages.map((page) => (
               <Button
-                key={page.url}
-                onClick={handleCloseNavMenu}
+                key={page.title}
+                onClick={() => handleClickPages(page)}
                 sx={{
                   my: 2,
                   color: "black",
@@ -149,9 +205,14 @@ const {login,logout}= useAuthCalls()
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 2 }}>
-                <Avatar alt="" src="" />
+                <Avatar
+                  alt=""
+                  src={currentUser ? MyFoto :   image }/>
+                
+             
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -168,32 +229,31 @@ const {login,logout}= useAuthCalls()
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {!currentUser ? (
-                <>
-                  <MenuItem
-                    onClick={() => ( navigate("/login"))}
-                  >
-                    <Typography textAlign="center">Login</Typography>
-                  </MenuItem>
-                </>
-              ) : (
-                <>
-               
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">My Blogs</Typography>
-                  </MenuItem>
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">Profile</Typography>
-                  </MenuItem>
-                  <MenuItem onClick={(handleCloseUserMenu, logout)}>
-                    <Typography textAlign="center">Logout</Typography>
-                  </MenuItem>
-                </>
-              )}
+              {currentUser
+                ? settings.map((setting) => (
+                    <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        onClick={() => handleClickSettings(setting)}
+                      >
+                        {setting.title}
+                      </Typography>
+                    </MenuItem>
+                  ))
+                : current.map((current) => (
+                    <MenuItem key={current.title} onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        onClick={() => navigate(current.url)}
+                      >
+                        {current.title}
+                      </Typography>
+                    </MenuItem>
+                  ))}
             </Menu>
           </Box>
         </Toolbar>
-  
+      </Container>
     </AppBar>
   );
 }

@@ -30,7 +30,7 @@ const Login = () => {
         <Grid item xs={12} sm={10} md={6} >
           <Avatar
             sx={{
-              backgroundColor: "secondary.light",
+              backgroundColor: "orange",
             
               m: "auto",
               width: 40,
@@ -39,7 +39,7 @@ const Login = () => {
           >
             <LockIcon size="30" />
           </Avatar>
-          <Typography variant="h4" align="center" mb={4} color="blue">
+          <Typography variant="h4" align="center" mb={4} color="grey">
             Login
           </Typography>
 

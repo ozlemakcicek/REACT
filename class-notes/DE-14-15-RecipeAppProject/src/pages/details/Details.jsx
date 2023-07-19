@@ -9,6 +9,8 @@ import {
   OtherPart,
 } from "./DetailsStyles";
 import dietsvg from "../../assets/diet.svg";
+
+
 const Details = () => {
   const location = useLocation();
   //navigate ten state ile gönderilen verinin burada yakalanması için kullanılan bir hook
