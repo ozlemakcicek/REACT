@@ -8,9 +8,9 @@ import Grid from "@mui/material/Grid";
 
 
 
-const CommentForm = ({id}) => {
+const CommentForm = ({id,blogDetail,setBlogDetail}) => {
  
-const {postNewComment,getComments}=useBlogCalls() 
+const {postNewComment,getComments,getBlogData}=useBlogCalls() 
 // const {comments}=useSelector((state)=>state.blog)
 
 
@@ -29,7 +29,9 @@ const {postNewComment,getComments}=useBlogCalls()
    console.log(newComment);
    try {
     await postNewComment(newComment, id);
-     await getComments(id);
+         const response = await getBlogData(id);
+         setBlogDetail(response);
+
  setComment(""); 
    } catch (error) {
     console.log(error);

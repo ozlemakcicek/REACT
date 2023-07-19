@@ -115,10 +115,10 @@ const useBlogCalls = () => {
     }
   };
 
-  const postNewComment = async (comm, id) => {
+  const postNewComment = async (comment, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`api/comments/${id}/`, comm);
+      await axiosWithToken.post(`api/comments/${id}/`, comment);
       getComments(id);
       toastSuccessNotify(`successfuly performed!`);
     } catch (error) {

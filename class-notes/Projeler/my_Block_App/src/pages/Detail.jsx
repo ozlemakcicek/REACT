@@ -42,6 +42,8 @@ const Detail = () => {
   const {comments} = useSelector((state)=>state.blog)
   const [commentField,setCommentField]=useState(false)
 
+
+  const [blogDetail, setBlogDetail] = useState(null);
 //   const navigate = useNavigate();
  
 //guncel tarih icin
@@ -49,21 +51,26 @@ const Detail = () => {
   const formattedDate = currentDate.toDateString();
 
 
-//Detail sayfasi icin
-const {getDetailData}=useBlogCalls()
+//blogDetail sayfasi icin
+const { getDetailData } = useBlogCalls();
 const { id } = useParams(); 
 console.log(useParams());
 
 useEffect(() => {
- getDetailData(id)
-}, [])
-
+  const fetchData = async () => {
+    const response = await getDetailData(id);
+    setBlogDetail(response);
+    console.log(blogDetail);
+  };
+  fetchData();
+  // eslint-disable-line
+}, []);
 
 const [isClicked, setClicked] = useState(false);
 
 const handleClickLike = () => {
-  postLike(detail?.id);
-  getDetailData(detail.id);
+  postLike(blogDetail?.id);
+ getDetailData(blogDetail.id);
   setClicked(!isClicked);
 };
 
@@ -118,7 +125,7 @@ const [formValues, setFormValues] = useState({
      >
        <CardMedia
          component="img"
-         image={detail?.image}
+         image={blogDetail?.image}
          alt="adas"
          height="200"
          sx={{ objectFit: "contain", py: 2 }}
@@ -136,12 +143,12 @@ const [formValues, setFormValues] = useState({
            }}
          />
 
-         <Typography>{detail.author}</Typography>
+         <Typography>{blogDetail?.author}</Typography>
        </CardContent>
 
        <CardHeader subheader={formattedDate} sx={{ marginLeft: "3rem" }} />
 
-       <CardHeader title={detail.title} sx={{ marginLeft: "3rem" }} />
+       <CardHeader title={blogDetail?.title} sx={{ marginLeft: "3rem" }} />
 
        <CardContent>
          <Typography
@@ -151,7 +158,7 @@ const [formValues, setFormValues] = useState({
              marginLeft: "3rem",
            }}
          >
-           {detail.content}
+           {blogDetail.content}
          </Typography>
        </CardContent>
 
@@ -162,7 +169,7 @@ const [formValues, setFormValues] = useState({
            onClick={handleClickLike}
          >
            <FavoriteBorderIcon />
-           <Typography variant="h5">{detail?.likes}</Typography>
+           <Typography variant="h5">{blogDetail?.likes}</Typography>
          </IconButton>
 
          <IconButton
@@ -170,24 +177,21 @@ const [formValues, setFormValues] = useState({
            onClick={() => setCommentField(!commentField)}
          >
            <ChatBubbleOutlineIcon />
-           <Typography variant="h5">{detail?.comment_count}</Typography>
+           <Typography variant="h5">{blogDetail?.comment_count}</Typography>
          </IconButton>
 
          <IconButton aria-label="add to favorites">
            <RemoveRedEyeIcon />
-           <Typography variant="h5">{detail?.post_views}</Typography>
+           <Typography variant="h5">{blogDetail?.post_views}</Typography>
          </IconButton>
        </CardActions>
 
        <Box
          sx={{
-
            marginTop: "2rem",
-           
-           
          }}
        >
-         {currentUser === detail.author ? (
+         {currentUser === blogDetail.author ? (
            <>
              {" "}
              <Button
@@ -195,41 +199,41 @@ const [formValues, setFormValues] = useState({
                variant="contained"
                color="success"
                size="small"
-                onClick={() => {
-                  setFormValues(detail);
-                  handleOpen();
-                }}
+               onClick={() => {
+                 setFormValues(blogDetail);
+                 handleOpen();
+               }}
              >
                Update Blog
              </Button>
              <DeleteModal
-               key={detail.id}
-                open={open}
-                handleClose={handleClose}
-                blogId={detail.id}
-                formValues={formValues}
-                setFormValues={setFormValues}
+               key={blogDetail.id}
+               open={open}
+               handleClose={handleClose}
+               blogId={blogDetail.id}
+               formValues={formValues}
+               setFormValues={setFormValues}
              />
            </>
          ) : (
            ""
          )}{" "}
-         {currentUser === detail.author ? (
+         {currentUser === blogDetail.author ? (
            <>
              <Button
                sx={{ padding: "0.6rem" }}
                variant="contained"
                color="error"
                size="small"
-                onClick={() => handleOpen1()}
+               onClick={() => handleOpen1()}
              >
                Delete Blog
              </Button>
              <UpdateModal
-               key={detail.id}
-                open={open1}
-                handleClose={handleClose1}
-               blogId={detail.id}
+               key={blogDetail.id}
+               open={open1}
+               handleClose={handleClose1}
+               blogId={blogDetail.id}
              />
            </>
          ) : (
@@ -239,10 +243,10 @@ const [formValues, setFormValues] = useState({
 
        {commentField ? (
          <>
-           {detail.comments.map((item) => (
+           {blogDetail.comments.map((item) => (
              <CommentCard item={item} />
            ))}
-           <CommentForm id={id} />{" "}
+           <CommentForm setBlogDetail={setBlogDetail} blogDetail={blogDetail} />{" "}
          </>
        ) : (
          ""
