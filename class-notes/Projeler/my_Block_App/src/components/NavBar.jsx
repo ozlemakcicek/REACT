@@ -13,12 +13,12 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import MyImage from "../assets/influencer-g45b0f636a_1280.jpg";
+import MyImage from "../assets/ÖZLEM AKCICEK.png";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import useAuthCalls from "../hooks/useAuthCalls";
-import MyFoto from "../assets/OIF.jpg";
+import MyFoto from "../assets/girl-g9babe37aa_1280.jpg";
 import { toastWarnNotify } from "../helper/ToastNotify";
 
 // const pages = ["DASHBOARD","NEW BLOG", "ABOUT"];
@@ -110,7 +110,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "orange" }}>
+    <AppBar position="static" sx={{ bgcolor:"orange",height:"12vh" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -127,9 +127,12 @@ function Navbar() {
               src={MyImage}
               alt="MyImage"
               style={{
-                width: 100,
-                height: 80,
-borderRadius:"0% 40%",
+                width:"130px",
+                height:"12vh",
+               
+                
+// borderRadius:"70% 20% 50% 0%",
+borderRadius:"50%",
                 paddingRight: "20px",
               }}
               onClick={() => navigate("/")}

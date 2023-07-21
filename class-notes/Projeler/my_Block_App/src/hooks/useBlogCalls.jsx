@@ -11,6 +11,7 @@ import {
   getSucces,
   getUserSuccess,
   postLikeSuccess,
+  getCategorySuccess,
 } from "../features/blogSlice";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -31,6 +32,8 @@ const useBlogCalls = () => {
 
   const { axiosWithToken } = useAxios();
 
+
+
   const getBlogData = async (url) => {
     dispatch(fetchStart());
     console.log(url);
@@ -46,35 +49,33 @@ const useBlogCalls = () => {
     }
   };
 
-  //   const getDetailData = async (id) => {
-  //     console.log(id);
-  //     dispatch(fetchStart());
-  //     try {
-  //       const { data } = await axios.get(`${BASE_URL}api/blogs/${id}/`, {
-  //         headers: {
-  //           Authorization: `Token ${token}`,
-  //         },
-  //       });
 
-  //       dispatch(getDetSuccess(data));
-  //     } catch (error) {
-  //       dispatch(fetchFail());
-  //     }
-  //   };
+  const postNewBlog=async(values)=>{
+  dispatch(fetchStart)
+  console.log(values);
+  try {
+   const {data}= await axiosWithToken.post(`api/blogs/`, values,)
+   dispatch(getNewBlogSuccess(data)) 
+  } 
+  
+  catch (error) {
+    dispatch(fetchFail())
+    
+  }
+}
 
-  // const deleteBlogData = async (url, id) => {
-  //     dispatch(fetchStart());
-  //     try {
-  //       await axios.delete(`${BASE_URL}api/${url}/${id}/`, {
-  //         headers: { Authorization: `Token ${token}` },
-  //       });
-  //       getBlogData(url);
-  //       toastSuccessNotify(`${url} successfuly deleted!`);
-  //     } catch (error) {
-  //       dispatch(fetchFail());
-  //       toastErrorNotify(`${url} not successfuly deleted!`);
-  //     }
-  //   };
+
+  const getCategoryData = async () => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios.get(`${BASE_URL}api/categories/`);
+      dispatch(getCategorySuccess(data));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
+
 
     const getDetailData = async (id) => {
       console.log(id);
@@ -102,24 +103,44 @@ const useBlogCalls = () => {
     };
 
 
+    
+  const putBlogData = async (formValues,idNo) => {
+    dispatch(fetchStart);
+   
+    try {
+       await axiosWithToken.put(
+        `api/blogs/${idNo}/`,
+        formValues,
+      );
+      getBlogData(idNo)
+     toastSuccessNotify(`successfuly updated!`)
+    } catch (error) {
+     
+      toastErrorNotify(`not successfuly updated!`)
+       dispatch(fetchFail());
+    }
+  };
+
+
+
   const postLike = async (idd) => {
     console.log(token);
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.post(`api/likes/${idd}/`, null, );
-      console.log(data);
-      dispatch(postLikeSuccess(data));
+     await axiosWithToken.post(`api/likes/${idd}/`, null, );
+   
+      dispatch(postLikeSuccess());
     } catch (error) {
       console.log(error);
       dispatch(fetchFail);
     }
   };
 
-  const postNewComment = async (comment, id) => {
+  const postNewComment = async (comm, idNo) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`api/comments/${id}/`, comment);
-      getComments(id);
+      await axiosWithToken.post(`api/comments/${idNo}/`, comm);
+      getComments(idNo);
       toastSuccessNotify(`successfuly performed!`);
     } catch (error) {
       dispatch(fetchFail());
@@ -127,10 +148,10 @@ const useBlogCalls = () => {
     }
   };
 
-  const getComments = async (id) => {
+  const getComments = async (idNo) => {
     dispatch(fetchStart());
     try {
-        const { data } = await axios.get(`${BASE_URL}api/comments/${id}/`);
+        const { data } = await axios.get(`${BASE_URL}api/comments/${idNo}/`);
       dispatch(getCommentSuccess(data));
      
     } catch (error) {
@@ -138,32 +159,10 @@ const useBlogCalls = () => {
     }
   };
 
-const postNewBlog=async(values)=>{
-  dispatch(fetchStart)
-  console.log(values);
-  try {
-   const {data}= await axiosWithToken.post(`api/blogs/`, values,)
-   dispatch(getNewBlogSuccess(data)) 
-  } 
-  
-  catch (error) {
-    dispatch(fetchFail())
-    
-  }
-}
 
 
-//  const postNewBlog = async (values) => {
-//    dispatch(fetchStart());
-//    try {
-//      const { data } = await axios.post(`${BASE_URL}api/blogs/`, values, {
-//        headers: { Authorization: `Token ${token}` },
-//      });
-//      dispatch(getNewBlogSuccess(data));
-//    } catch (error) {
-//      dispatch(fetchFail);
-//    }
-//  };
+
+
 
  const getUserData=async(authorId)=>{
   dispatch(fetchStart())
@@ -190,6 +189,8 @@ const postNewBlog=async(values)=>{
     getComments,
     postNewBlog,
     getUserData,
+    putBlogData,
+    getCategoryData,
   };
 };
 

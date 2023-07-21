@@ -8,31 +8,34 @@ import Grid from "@mui/material/Grid";
 
 
 
-const CommentForm = ({id,blogDetail,setBlogDetail}) => {
+const CommentForm = ({idNo}) => {
  
-const {postNewComment,getComments,getBlogData}=useBlogCalls() 
+const {postNewComment}=useBlogCalls() 
 // const {comments}=useSelector((state)=>state.blog)
 
 
 
- const [comment, setComment] = useState("");
 
-
- const handleSubmit = async(e) => {
+ const handleSubmit =(e) => {
    e.preventDefault();
 
+
+  const comment = e.target[0].value;
+
   const newComment = {
-      post: id,
-      content: comment,
+      content: comment, 
+      post: idNo,
+     
     
    };
    console.log(newComment);
    try {
-    await postNewComment(newComment, id);
-         const response = await getBlogData(id);
-         setBlogDetail(response);
+     postNewComment(newComment, idNo);
+         
+         
 
- setComment(""); 
+  e.target[0].value = ""
+
    } catch (error) {
     console.log(error);
    }
@@ -88,7 +91,7 @@ const {postNewComment,getComments,getBlogData}=useBlogCalls()
               variant="outlined"
               multiline // Çok satırlı alan
               rows={4} // Satır sayısı
-              onChange={(e) => setComment(e.target.value)}
+              
             />
 
             <Button

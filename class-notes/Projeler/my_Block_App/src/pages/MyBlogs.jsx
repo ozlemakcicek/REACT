@@ -21,22 +21,26 @@ const {currentUserId}=useSelector((state)=>state.auth)
     <>
    
   
-      <Grid
+      <Grid container
         
        
-        xs={10}
+        xs={10} 
         sx={{
           display: "flex",
+        
           justifyContent: "center",
           alignItems: "center",
           mt: 10,
+         
+      
+         
        
         }}
       >
       {userDetail?.map((blog)=> 
     (  <Grid item key={blog?.id}>
     
-      <Card blog={blog}/>
+      <Card blog={blog}  />
   
     </Grid>)
     

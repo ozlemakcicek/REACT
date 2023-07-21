@@ -16,7 +16,7 @@ const blogSlice = createSlice({
     like: "",
     detail: [],
     userDetail: [],
-    id:"",
+   
    
   },
   reducers: {
@@ -30,10 +30,7 @@ const blogSlice = createSlice({
       state[payload.url] = payload.data;
     },
 
-    fetchFail: (state) => {
-      state.loading = false;
-      state.error = true;
-    },
+   
 
     postLikeSuccess: (state, { payload }) => {
       state.loading = false;
@@ -67,6 +64,10 @@ const blogSlice = createSlice({
     getUserSuccess: (state, { payload }) => {
       state.loading = false;
       state.userDetail=payload;
+    },
+     fetchFail: (state) => {
+      state.loading = false;
+      state.error = true;
     },
   },
 });

@@ -94,7 +94,7 @@ const NewBlog = () => {
                   postNewBlog(values);
                   actions.resetForm(); // submit bitince resetle
                   toastSuccessNotify("Succesfuly created");
-                  navigate("/MyBlogs");
+                  navigate("/");
                 }}
               >
                 {({
@@ -106,7 +106,7 @@ const NewBlog = () => {
                   handleSubmit,
                   setFieldValue,
                 }) => (
-                  <Form>
+                  <Form >
                     <Box
                       sx={{
                         display: "flex",

@@ -98,7 +98,7 @@ const [isClicked,setClicked]=useState(false);
       <CardContent sx={{ display: "flex", alignItems: "center" }}>
         <Avatar
           src="/broken-image.jpg"
-          sx={{ width: "30px", height: "30px",marginRight:"10px" }}
+          sx={{ width: "30px", height: "30px",marginRight:"15px" }}
         />
         <Typography>{blog.author}</Typography>
       </CardContent>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toastSuccessNotify } from '../../helper/ToastNotify';
 import { Box, Button, Modal, Typography } from '@mui/material';
 
-const DeleteModal = ({handleClose,open,blogId}) => {
+const DeleteModal = ({handleClose,open,blogId,}) => {
  
 
 
@@ -13,9 +13,9 @@ const DeleteModal = ({handleClose,open,blogId}) => {
     const navigate = useNavigate();
 
     const handleClickDel = () => {
-      deleteBlogData(blogId);
+      deleteBlogData("blogs",blogId);
       handleClose();
-      toastSuccessNotify("Blog was deleted");
+      // toastSuccessNotify("Blog was deleted");
       navigate("/");
     };
 

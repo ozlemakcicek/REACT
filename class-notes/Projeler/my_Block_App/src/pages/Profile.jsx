@@ -7,15 +7,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 
 import Typography from "@mui/material/Typography";
+import logo from "../assets/question-g78a2f28cd_1280.jpg";
 
 const Profile = () => {
-  const {currentUser,bio,email}=useSelector((state)=>state.auth)
+  const {currentUser,bio,email,firstName,image}=useSelector((state)=>state.auth)
   return (
     <Grid
       container
       sx={{
-        mt: 4,
-        mb: 53,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -28,20 +27,22 @@ const Profile = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          mt: 10,
-       
         }}
       >
         <Box
           sx={{
-            width: 900,
+            width: 650,
             minWidth: 400,
-            marginTop: "7em",
-           
-           
+            marginTop: "2em",
           }}
         >
-          <Card sx={{bgcolor:"lightgrey"}}>
+          <Card sx={{ bgcolor: "lightgrey" }}>
+            <CardMedia
+              // sx={{ objectFit: "contain", height: "300px" }}
+              component="img"
+              image={image ? image : logo}
+              alt="image"
+            />
             <CardContent sx={{ textAlign: "center" }}>
               <Typography gutterBottom variant="h5" component="div">
                 Who am I?
@@ -50,10 +51,13 @@ const Profile = () => {
                 {currentUser}
               </Typography>
               <Typography variant="h6" color="text.secondary">
-                {bio}
-              </Typography>
-              <Typography variant="h5" color="text.secondary">
                 {email}
+              </Typography>
+              <Typography variant="h6" color="text.secondary">
+                {firstName}
+              </Typography>
+              <Typography variant="h6" color="text.secondary">
+                {bio}
               </Typography>
             </CardContent>
           </Card>

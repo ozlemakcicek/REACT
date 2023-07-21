@@ -3,13 +3,16 @@ import React, { useEffect, useState } from "react";
 import useBlogCalls from "../../hooks/useBlogCalls";
 import {  useSelector } from "react-redux";
 
-  const CommentCard = ({ item }) => {
-    console.log(item);
+  const CommentCard = ({ comm }) => {
+    console.log(comm);
       const {getComments} = useBlogCalls();
+
+const { comments } = useSelector((state) => state.blog);
+console.log(comments);
 
 
     useEffect(() => {
-      getComments(item.id);
+      getComments(comm.id);
     }, []); // eslint-disable-line
 
     const currentDate = new Date();
@@ -17,32 +20,32 @@ import {  useSelector } from "react-redux";
 
     return (
       <>
-        {/* <Typography
-        variant="h5"
-        sx={{ marginLeft: "4rem", marginBottom: "2rem", marginTop: "1rem" }}
-      >
-        Comments
-      </Typography> */}
-
-        <Box
-          style={{
+        <Typography
+          variant="h5"
+          sx={{
             marginLeft: "4rem",
+            marginBottom: "2rem",
             marginTop: "1rem",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            gap: 2,
-            "& .MuiTextFieldRoot": { m: 1, width: "95%" },
+            color: "darkblue",
           }}
-          noValidate
-          autoComplete="off"
         >
-          <Box sx={{ borderBottom: 1, borderColor: "orange", marginBottom: 2 }}>
-            <Typography variant="body2">{item.content}</Typography>
+          Comments
+        </Typography>
+
+        {comments.map((comm) => (
+          <Box
+            sx={{
+              marginLeft: "4rem",
+              borderBottom: 1,
+              borderColor: "orange",
+              marginBottom: 2,
+            }}
+          >
+            <Typography variant="body2">{comm.content}</Typography>
             <Typography>{formattedDate}</Typography>
-            <Typography variant="h5">{item.user}</Typography>
+            <Typography variant="h5">{comm.user}</Typography>
           </Box>
-        </Box>
+        ))}
       </>
     );
   };
