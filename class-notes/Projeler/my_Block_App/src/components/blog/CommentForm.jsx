@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid";
 const CommentForm = ({idNo}) => {
  
 const {postNewComment}=useBlogCalls() 
-// const {comments}=useSelector((state)=>state.blog)
+
 
 
 
@@ -64,8 +64,7 @@ const {postNewComment}=useBlogCalls()
       <Grid
         item
         xs={12}
-        // justifyContent="center"
-        // direction="row-reverse"
+      
         sx={{
           p: 2,
           m: 1,

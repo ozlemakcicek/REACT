@@ -11,13 +11,12 @@ import { Button } from "@mui/material";
 
 
 
-//2-validate yerine validationSchema yi getirip siteden duzenlyrz.basina export yaziyorz baska syfaya gidecegi icin.ve yup ile degil component mantigi ile register sayfasindan gnderecgmz icin baslardaki yup lari silyrz.ama importlar yine yup tan
+
 export const registerSchema = object().shape({
   userName: string()
     .min(1, "Too Short!")
     .max(150, "Too Long!")
     .required("Required"),
- 
 
   email: string().email("Invalid email").required(" Email Required"),
 
@@ -26,18 +25,16 @@ export const registerSchema = object().shape({
   bio: string(),
 
   password: string()
-    .matches(/\d+/, "Password bir sayı içermelidir") //regex.\d(decimal)+ ile sayi icermesini belrtyrz.- ile istemediklerimizi belirtirz
-    .matches(/[a-z]/, "Password bir küçük harf içermelidir")
-    .matches(/[A-Z]/, "Password bir büyük harf içermelidir")
-    .matches(/[!,?{}><%&$#£+-.]+/, "Password bir özel karakter içermelidir")
+    .matches(/\d+/, "Das Passwort muss eine Zahl enthalten") //regex.\d(decimal)+ ile sayi icermesini belrtyrz.- ile istemediklerimizi belirtirz
+    .matches(/[a-z]/, "Das Passwort muss einen Kleinbuchstaben enthalten")
+    .matches(/[A-Z]/, "Das Passwort muss einen Großbuchstaben enthalten")
+    .matches(
+      /[!,?{}><%&$#£+-.]+/,
+      "Das Passwort muss ein Sonderzeichen enthalten"
+    )
     .required("Required"),
-
- 
 });
 
-//1-return kismini silip Formik yapisini sitedn getrp yapstryrz.initialValuesw kismini App doc daki body den gtrp " " e esitlyrz
-
-// Register sayfasindan props olarak gonderilen CallBack icindeki degerleri(Formik sitesinden goruyoruz) karsilayalim
 
   
 
@@ -65,7 +62,7 @@ const RegisterForm = ({
           <TextField
             id="username"
             label="UserName"
-            name="username" // name e gore yaziyorz bunlari
+            name="username" 
             type="text"
             variant="outlined"
             value={values.username}
@@ -81,7 +78,7 @@ const RegisterForm = ({
             label="Email"
             name="email"
             type="email"
-            // value={values.email}
+         
             onChange={handleChange}
             onBlur={handleBlur}
             helperText={touched.email && errors.email}
@@ -107,8 +104,7 @@ const RegisterForm = ({
             label="Image"
             name="image"
             type="img"
-            // variant="outlined"
-            // value={values.image}
+          
             onChange={handleChange}
             onBlur={handleBlur}
             helperText={touched.image && errors.image}

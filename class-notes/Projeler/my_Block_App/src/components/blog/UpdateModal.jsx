@@ -18,22 +18,13 @@ import { useSelector } from "react-redux";
 import useBlogCalls from "../../hooks/useBlogCalls";
 
 const UpdateModal = ({ open,handleOpen, handleClose,blogId,formValues,setFormValues }) => {
-  // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+
 
 
   
 const{getBlogData,putBlogData}=useBlogCalls()
   const { categories } = useSelector((state) => state.blog);
-  // const [formValues, setFormValues] = React.useState({
-  //   title: "",
-  //   image: "",
-  //   category: "",
-  //   slug: "",
-  //   status: "",
-  //   content: "",
-  // });
+
 
  React.useEffect(() => {
    getBlogData("categories");
@@ -66,14 +57,7 @@ const{getBlogData,putBlogData}=useBlogCalls()
       open={open}
       onClose={() => {
         handleClose();
-        // setFormValues({
-        //   title: "",
-        //   image: "",
-        //   category: "",
-        //   slug: "",
-        //   status: "",
-        //   content: "",
-        // });
+      
       }}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"

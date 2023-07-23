@@ -13,17 +13,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import MyImage from "../assets/ÖZLEM AKCICEK.png";
+import MyImage from "../assets/ÖZLEM AKCICEK (3).png";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import useAuthCalls from "../hooks/useAuthCalls";
-import MyFoto from "../assets/girl-g9babe37aa_1280.jpg";
+import MyFoto from "../assets/OIF.jpg";
 import { toastWarnNotify } from "../helper/ToastNotify";
 
-// const pages = ["DASHBOARD","NEW BLOG", "ABOUT"];
 
-// const settings = ["Login"];
 
 const pages = [
   {
@@ -131,8 +129,8 @@ function Navbar() {
                 height:"12vh",
                
                 
-// borderRadius:"70% 20% 50% 0%",
-borderRadius:"50%",
+borderRadius:"50% 30% 60% 20%",
+// borderRadius:"50%",
                 paddingRight: "20px",
               }}
               onClick={() => navigate("/")}

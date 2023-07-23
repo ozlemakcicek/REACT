@@ -15,7 +15,7 @@ const DeleteModal = ({handleClose,open,blogId,}) => {
     const handleClickDel = () => {
       deleteBlogData("blogs",blogId);
       handleClose();
-      // toastSuccessNotify("Blog was deleted");
+     
       navigate("/");
     };
 

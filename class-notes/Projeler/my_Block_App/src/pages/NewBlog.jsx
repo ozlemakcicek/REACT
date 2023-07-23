@@ -47,8 +47,7 @@ const NewBlog = () => {
 
   const { categories } = useSelector((state) => state.blog);
 
-    // const currentLocation = useLocation();
-    // console.log(currentLocation);  
+    
 
     useEffect(() => {
       getBlogData("categories")
@@ -274,84 +273,4 @@ const NewBlog = () => {
 };
 export default NewBlog;
 
-{
-  /* <Card
-          sx={{
-            width: 400,
-            height: 580,
-            marginTop: "4rem",
-          
 
-            marginBottom: "8rem",
-            boxShadow: "4px 4px 8px rgba(0, 0, 0, 50)",
-          }}
-        >
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": {
-                m: 1,
-                width: "45ch",
-                marginLeft: "1.3rem",
-                marginTop: "1rem",
-                display: "flex",
-                flexDirection: "column",
-              },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <Typography id="modal-modal-title" variant="h5" sx={{marginLeft:"1.5rem",fontFamily:"monospace",fontSize:"35px"}}>
-              New Blog
-            </Typography>
-            <TextField
-              required
-              id="outlined-required"
-              label="Title"
-              placeholder="Title"
-            />
-            <TextField
-              required
-              id="outlined-required"
-              label="Image"
-              placeholder="Image"
-            />
-            <TextField
-              id="outlined-required"
-              select
-              label="Category"
-              required
-            />
-            <TextField
-              id="outlined-select-currency"
-              select
-              label="Status"
-              required
-            />
-            <TextField
-              required
-              id="outlined-required"
-              label="Content"
-              placeholder="Content"
-              multiline
-              rows={2}
-            />
-            <Button
-              variant="contained"
-              type="submit"
-              sx={{
-                bgcolor: "orange",
-                color: "black",
-                fontWeight: "600",
-                ":hover": { bgcolor: "orange" },
-                marginLeft: "1rem",
-                marginRight: "1rem",
-                marginTop: "3rem",
-                width: "90%",
-              }}
-            >
-              NEW BLOG
-            </Button>
-          </Box>
-        </Card> */
-}
