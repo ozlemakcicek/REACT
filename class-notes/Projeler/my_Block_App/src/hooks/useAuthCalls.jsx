@@ -102,8 +102,9 @@ const useAuthCalls = () => {
       toastSuccessNotify("Register performed");
       navigate("/login");
     } catch (err) {
-      dispatch(fetchFail());
-      toastErrorNotify("Register can not be performed");
+   
+      toastErrorNotify("Register can not be performed"); 
+        dispatch(fetchFail());
     }
   };
 

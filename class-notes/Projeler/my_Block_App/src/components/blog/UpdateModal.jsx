@@ -49,7 +49,7 @@ const{getBlogData,putBlogData}=useBlogCalls()
   };
 
   console.log(formValues);
- const navigate = useNavigate();
+//  const navigate = useNavigate();
 
 
   return (

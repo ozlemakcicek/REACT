@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form } from "formik";
-import { object, string, ref } from "yup";
+import { object, string } from "yup";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 
@@ -37,32 +37,32 @@ export const registerSchema = object().shape({
 
 
   
-
+ 
 const RegisterForm = ({
   values,
   errors,
   touched,
   handleChange,
   handleBlur,
+  handleSubmit,
+
 }) => {
 
   return (
     <div>
-      <Form>
+      <Form >
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             gap: 2,
             marginTop: "3rem",
-            
-           
           }}
         >
           <TextField
             id="username"
             label="UserName"
-            name="username" 
+            name="username"
             type="text"
             variant="outlined"
             value={values.username}
@@ -78,7 +78,7 @@ const RegisterForm = ({
             label="Email"
             name="email"
             type="email"
-         
+            value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
             helperText={touched.email && errors.email}
@@ -91,6 +91,7 @@ const RegisterForm = ({
             label="Password"
             name="password"
             type="password"
+            value={values.password}
             variant="outlined"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -104,7 +105,7 @@ const RegisterForm = ({
             label="Image"
             name="image"
             type="img"
-          
+            value={values.image}
             onChange={handleChange}
             onBlur={handleBlur}
             helperText={touched.image && errors.image}
@@ -116,6 +117,7 @@ const RegisterForm = ({
             label="Bio"
             name="bio"
             type="text"
+            value={values.bio}
             variant="outlined"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -126,8 +128,14 @@ const RegisterForm = ({
           <Button
             variant="contained"
             type="submit"
-            sx={{ bgcolor: "lightgreen", color: "black", fontWeight: "600",":hover":{bgcolor:"lightgreen"}}}
-         
+            size="large"
+            sx={{
+              bgcolor: "lightgreen",
+              color: "black",
+              fontWeight: "600",
+              ":hover": { bgcolor: "lightgreen" },
+            }}
+           
           >
             SIGN UP
           </Button>
