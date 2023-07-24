@@ -1,7 +1,7 @@
 
 
 
-import React, { useEffect, useState } from "react";
+
 import axios from "axios";
 
 
@@ -38,9 +38,7 @@ const useAuthCalls = () => {
 
 // //! apideki reswimleri ekrana basma;
 
- const [data, setData] = useState(null);
- const [loading, setLoading] = useState(true);
- const [error, setError] = useState(null);
+
 
 
 

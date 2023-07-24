@@ -65,7 +65,7 @@ const Register = () => {
             }}
             validationSchema={registerSchema}
             onSubmit={(values, actions) => {
-              register(values);
+              register({ ...values, password2: values.password });;
               console.log(values);
               actions.resetForm(); // submit bitince resetle
               actions.setSubmitting(false);

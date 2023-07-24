@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "formik";
-import { object, string } from "yup";
+import { object, string,ref } from "yup";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
@@ -13,7 +13,7 @@ import { Button } from "@mui/material";
 
 
 export const registerSchema = object().shape({
-  userName: string()
+  username: string()
     .min(1, "Too Short!")
     .max(150, "Too Long!")
     .required("Required"),
@@ -33,6 +33,10 @@ export const registerSchema = object().shape({
       "Das Passwort muss ein Sonderzeichen enthalten"
     )
     .required("Required"),
+
+  password2: string()
+    .oneOf([ref("password"), null], "Passwords must match")
+    .required("Confirm Passwort wird benötigt !"),
 });
 
 
@@ -44,13 +48,13 @@ const RegisterForm = ({
   touched,
   handleChange,
   handleBlur,
-  handleSubmit,
+ 
 
 }) => {
 
   return (
     <div>
-      <Form >
+      <Form>
         <Box
           sx={{
             display: "flex",
@@ -61,7 +65,7 @@ const RegisterForm = ({
         >
           <TextField
             id="username"
-            label="UserName"
+            label="Username"
             name="username"
             type="text"
             variant="outlined"
@@ -78,6 +82,7 @@ const RegisterForm = ({
             label="Email"
             name="email"
             type="email"
+            variant="outlined"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -97,6 +102,20 @@ const RegisterForm = ({
             onBlur={handleBlur}
             helperText={touched.password && errors.password}
             error={touched.password && Boolean(errors.password)}
+            required
+          />
+
+          <TextField
+            id="password2"
+            label="Confirm Password"
+            name="password2"
+            type="password"
+            value={values.password2}
+            variant="outlined"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.password2 && errors.password2}
+            error={touched.password2 && Boolean(errors.password2)}
             required
           />
 
@@ -135,7 +154,6 @@ const RegisterForm = ({
               fontWeight: "600",
               ":hover": { bgcolor: "lightgreen" },
             }}
-           
           >
             SIGN UP
           </Button>
