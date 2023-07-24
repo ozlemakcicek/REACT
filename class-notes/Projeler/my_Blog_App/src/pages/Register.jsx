@@ -57,11 +57,11 @@ const Register = () => {
 
           <Formik
             initialValues={{
-              username: " ",
-              email: " ",
-              image: " ",
-              bio: " ",
-              password: " ",
+              username: "",
+              email: "",
+              image: "",
+              bio: "",
+              password: "",
             }}
             validationSchema={registerSchema}
             onSubmit={(values, actions) => {
