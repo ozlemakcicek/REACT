@@ -205,20 +205,21 @@ const Register = () => {
                     onBlur={handleBlur}
                     helperText={touched.password2 && errors.password2} //validationda verdiğimiz kalıba uymazsa ilgili mesajları göstermesi için
                     error={touched.password2 && errors.password2} //validationda verdiğimiz kalıba uymazsa rengi errora çevirmesi için
-                  />
-{/* variant=contained ile ici dolu bir button elde ederiz */}
+                 />
+
                   <Button type="submit" variant="contained" size="large">
                     SUBMIT
                   </Button>
                 </Box>
-              </Form>
-            )}
+              </Form> 
+              
+           )}
           </Formik>
-
+ <Grid>
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/">Do you have an account?</Link>
           </Box>
-        </Grid>
+       
 
         <Grid item xs={0} sm={7} md={6}>
           <Container>
@@ -226,10 +227,13 @@ const Register = () => {
           </Container>
         </Grid>
       </Grid>
+        </Grid>
     </Container>
-  );
+    </>
+ ); 
 };
-
+ 
 export default Register;
 
  //!! once formikten initialValues degerleri alip getir.sonra formikin validati yerine yuptan validationSchema yi getir ve initial degerler icin olan sartlari yaz.sonra onsubmit yapinca(formu gonderince) olmasi gereknler(action).sonra formigin fonksiyonlarini,degerleri,methodlari yakalayablmek icin kapsayici formik alaninin icine(<Formik>buraya</Formik>) olmazsa olmaz olan callback degerlerini getir.sonra bu callback function bir form elementi return ediyor.bunu kendimiz de yazablrz, formikin form elementini getir boylece onSubmitlerle ugrasmadik otomatik geliyor form yapisi ile..ve mui den textfield yapisini getirdik,degrleri tanimlkadik ,value degeri verdik onchange,onBlur u yazdik ve eklemeleri yaptik(helper text ve error mesajini dinamik sekilde ayarladik).bu sistemi butun input alanlari icin uyguladik.boylece form yapisini kurariz */}
+{/* variant=contained ile ici dolu bir button elde ederiz */}
