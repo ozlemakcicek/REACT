@@ -87,7 +87,6 @@ const [isClicked,setClicked]=useState(false);
             display: "-webkit-box",
             WebkitLineClamp: "2",
             WebkitBoxOrient: "vertical",
-            
           }}
         >
           {blog.content}
@@ -98,7 +97,7 @@ const [isClicked,setClicked]=useState(false);
       <CardContent sx={{ display: "flex", alignItems: "center" }}>
         <Avatar
           src="/broken-image.jpg"
-          sx={{ width: "30px", height: "30px",marginRight:"15px" }}
+          sx={{ width: "30px", height: "30px", marginRight: "15px" }}
         />
         <Typography>{blog.author}</Typography>
       </CardContent>
@@ -125,15 +124,14 @@ const [isClicked,setClicked]=useState(false);
 
         <Button
           type="submit"
-        
           sx={{
-            height:"3rem",
-            width:"18rem",
-            bgcolor: "orange",
-            color: "black",
+            height: "3rem",
+            width: "18rem",
+            bgcolor: "grey",
+            color: "white",
             fontWeight: "600",
             marginLeft: "3rem",
-            ":hover": { bgcolor: "orange" },
+            ":hover": { bgcolor: "lightgrey", color: "grey" },
           }}
           onClick={() => handleClickRM(blog.id)}
         >

@@ -13,6 +13,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+import MyLogo from "../assets/ÖZLEM (3).gif";
+import logo2 from "../assets/1.png";
+
 import MyImage from "../assets/ÖZLEM AKCICEK (3).png";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -108,34 +111,51 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor:"orange",height:"12vh" }}>
+    <AppBar position="static" sx={{ bgcolor: "white" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
+            href="/"
             sx={{
               display: {
-                xs: "flex",
-                md: "flex",
+                xs: "none",
+                //md: "flex",
                 lg: "flex",
                 cursor: "pointer",
+                color: "black",
               },
             }}
           >
             <img
-              src={MyImage}
-              alt="MyImage"
+              src={MyLogo}
+              alt="MyLogo"
               style={{
-                width:"130px",
-                height:"12vh",
-               
-                
-borderRadius:"50% 30% 60% 20%",
-// borderRadius:"50%",
+                width: "120px",
+
                 paddingRight: "20px",
+
+                // borderRadius:"50%",
               }}
               onClick={() => navigate("/")}
             />
           </Box>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "black",
+              textDecoration: "none",
+            }}
+          >
+            BLOG APP
+          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -182,11 +202,23 @@ borderRadius:"50% 30% 60% 20%",
 
           {/* kucuk ekranda */}
           <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex", cursor: "pointer" },
-            }}
+            // component="a"
+            href="/"
+            sx={{ display: { xs: "flex", lg: "none" }, mr: 1 }}
           >
+            <img
+              src={logo2}
+              alt="myLogo"
+              style={{
+                width: "120px",
+
+                // borderRadius:"50%",
+                paddingRight: "90px",
+              }}
+              onClick={() => navigate("/")}
+            />
+          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page.title}
@@ -206,11 +238,7 @@ borderRadius:"50% 30% 60% 20%",
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 2 }}>
-                <Avatar
-                  alt=""
-                  src={currentUser ? MyFoto :   image }/>
-                
-             
+                <Avatar alt="" src={currentUser ? MyFoto : image} />
               </IconButton>
             </Tooltip>
 

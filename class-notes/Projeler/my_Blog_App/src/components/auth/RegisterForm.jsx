@@ -3,6 +3,7 @@ import { Form } from "formik";
 import { object, string,ref } from "yup";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import * as Yup from "yup";
 
 // import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -11,20 +12,24 @@ import { Button } from "@mui/material";
 
 
 
-
-export const registerSchema = object().shape({
-  username: string()
-    .min(1, "Too Short!")
-    .max(150, "Too Long!")
-    .required("Required"),
-
-  email: string().email("Invalid email").required(" Email Required"),
-
-  image: string().max(400, "Too Long!"),
-
-  bio: string(),
-
-  password: string()
+export const RegisterSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(4, "zu kurz!")
+    .max(150, "zu  lang!")
+    .required("erforderlich"),
+  first_name: Yup.string()
+    //  .min(2, "zu kurz!")
+    .max(100, "zu  lang!")
+    .required("erforderlich"),
+  last_name: Yup.string()
+    //  .min(2, "zu kurz!")
+    .max(100, "zu  lang!")
+    .required("erforderlich"),
+  email: Yup.string().email("Invalid email").required("erforderlich"),
+  password: Yup.string()
+    .min(8, "muss mindestens 8 Zeichen lang sein !")
+    .max(150, "Zu lang!")
+    .required("erforderlich")
     .matches(/\d+/, "Das Passwort muss eine Zahl enthalten") //regex.\d(decimal)+ ile sayi icermesini belrtyrz.- ile istemediklerimizi belirtirz
     .matches(/[a-z]/, "Das Passwort muss einen Kleinbuchstaben enthalten")
     .matches(/[A-Z]/, "Das Passwort muss einen Großbuchstaben enthalten")
@@ -32,12 +37,12 @@ export const registerSchema = object().shape({
       /[!,?{}><%&$#£+-.]+/,
       "Das Passwort muss ein Sonderzeichen enthalten"
     )
-    .required("Required"),
-
-  password2: string()
-    .oneOf([ref("password"), null], "Passwords must match")
-    .required("Confirm Passwort wird benötigt !"),
+    .required("erforderlich"),
+  password2: Yup.string() //! password ile uyusmasi lazim o nedenle asagidaki cod yaziliyor
+    .oneOf([Yup.ref("password"), null], "Das Passwort muss identisch sein!")
+    .required("erforderlich"),
 });
+
 
 
   
@@ -55,34 +60,59 @@ const RegisterForm = ({
   return (
     <div>
       <Form>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-            marginTop: "3rem",
-          }}
-        >
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <TextField
             id="username"
-            label="Username"
             name="username"
             type="text"
+            label="Username"
             variant="outlined"
+            //defaultValue="Username"
             value={values.username}
             onChange={handleChange}
             onBlur={handleBlur}
-            helperText={touched.username && errors.username}
-            error={touched.username && Boolean(errors.username)}
+            helperText={touched.last_name && errors.username}
+            error={touched.last_name && Boolean(errors.username)}
+            required
+            //error=True ya da False olsun diye Boolean  ile sarmalaldik
+          />
+          <TextField
+            id="first_name"
+            name="first_name"
+            type="text"
+            label="Vorname"
+            variant="outlined"
+            //defaultValue="Vorname"
+            value={values.first_name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.last_name && errors.first_name}
+            error={touched.last_name && Boolean(errors.first_name)}
+            required
+          />
+
+          <TextField
+            id="lastname"
+            name="last_name"
+            type="text"
+            label="Nachname"
+            variant="outlined"
+            //defaultValue="Nachname"
+            value={values.last_name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.last_name && errors.last_name}
+            error={touched.last_name && Boolean(errors.last_name)}
             required
           />
 
           <TextField
             id="email"
-            label="Email"
             name="email"
             type="email"
+            label="Email"
             variant="outlined"
+            // defaultValue="Email"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -93,11 +123,12 @@ const RegisterForm = ({
 
           <TextField
             id="password"
-            label="Password"
             name="password"
             type="password"
-            value={values.password}
+            label="Password"
             variant="outlined"
+            // defaultValue="Password"
+            value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
             helperText={touched.password && errors.password}
@@ -107,55 +138,35 @@ const RegisterForm = ({
 
           <TextField
             id="password2"
-            label="Confirm Password"
             name="password2"
             type="password"
-            value={values.password2}
+            label="Bestätige Password"
             variant="outlined"
+            // defaultValue="Bestätige das Passwort"
+            value={values.password2}
             onChange={handleChange}
             onBlur={handleBlur}
             helperText={touched.password2 && errors.password2}
             error={touched.password2 && Boolean(errors.password2)}
             required
           />
-
-          <TextField
-            id="image"
-            label="Image"
-            name="image"
-            type="img"
-            value={values.image}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.image && errors.image}
-            error={touched.image && Boolean(errors.image)}
-          />
-
-          <TextField
-            id="bio"
-            label="Bio"
-            name="bio"
-            type="text"
-            value={values.bio}
-            variant="outlined"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            helperText={touched.bio && errors.bio}
-            error={touched.bio && Boolean(errors.bio)}
-          />
-
-          <Button
-            variant="contained"
-            type="submit"
-            size="large"
-            sx={{
-              bgcolor: "lightgreen",
-              color: "black",
-              fontWeight: "600",
-              ":hover": { bgcolor: "lightgreen" },
-            }}
-          >
-            SIGN UP
+          {/* 
+                  <TextField
+                    id="image"
+                    name="image"
+                    // type="image"
+                    label="Image"
+                    variant="outlined"
+                    defaultValue="Image"
+                    value={values.image}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    helperText={touched.image && errors.image}
+                    error={touched.image && errors.image}
+                    required
+                  /> */}
+          <Button type="submit" variant="contained" size="large">
+            Register
           </Button>
         </Box>
       </Form>

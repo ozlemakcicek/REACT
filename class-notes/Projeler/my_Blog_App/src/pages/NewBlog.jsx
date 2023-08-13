@@ -113,7 +113,7 @@ const NewBlog = () => {
 
                         gap: 2,
                         marginTop: "3rem",
-                        color: "orange",
+                        color: "grey",
                         marginLeft: "3rem",
                       }}
                     >
@@ -247,10 +247,10 @@ const NewBlog = () => {
                         variant="contained"
                         type="submit"
                         sx={{
-                          bgcolor: "orange",
-                          color: "black",
+                          bgcolor: "grey",
+                          color: "white",
                           fontWeight: "600",
-                          ":hover": { bgcolor: "orange" },
+                          ":hover": { bgcolor: "lightgrey", color:"grey" },
                         }}
            
                       >

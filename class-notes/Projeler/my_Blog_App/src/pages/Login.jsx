@@ -11,36 +11,43 @@ import useAuthCall from "../hooks/useAuthCalls";
 import LoginForm, { loginScheme } from "../components/auth/LoginForm";
 import useAuthCalls from "../hooks/useAuthCalls";
 
+import myImage2 from "../assets/20944201.jpg";
+
 const Login = () => {
   const { login } = useAuthCalls();
 
   return (
     <Container maxWidth="lg">
       <Grid
-       
+      container
+
         justifyContent="center"
         alignItems="center"
         direction="row-reverse"
-        sx={{
-
-          height: "80vh",
-          p: 10,
-        }}
+        //rowSpacing={{ sm: 3 }}
+        spacing={3}
+        sx={{ height: "85vh", paddingTop: "1rem" }}
       >
-        <Grid item xs={12} sm={10} md={6} >
+        <Grid item xs={12} sm={10} md={6} lg={6}>
           <Avatar
             sx={{
-              backgroundColor: "orange",
-            
+              backgroundColor: "primary.dark",
               m: "auto",
               width: 40,
               height: 40,
+              marginTop: 2,
+              marginBottom: 4,
             }}
           >
             <LockIcon size="30" />
           </Avatar>
-          <Typography variant="h4" align="center" mb={4} color="grey">
-            Login
+          <Typography
+            variant="h3"
+            color="primary"
+            align="center"
+            sx={{ marginBottom: 4 }}
+          >
+            Anmeldung
           </Typography>
 
           <Formik
@@ -53,22 +60,27 @@ const Login = () => {
             component={(props) => <LoginForm {...props} />}
           ></Formik>
 
-          <Box sx={{ textAlign: "center", mt: 2 }}>
-            <div style={{ display: "flex", justifyContent: "center", gap: 4 }}>
-              <p>Do you have not an account?</p>
-              <p >
-                <Link to="/register">
-                  Sign Up
-                </Link>
-              </p>
-            </div>
+          <Box sx={{ textAlign: "center", mt: 3, width: "100%" }}>
+            <Link to="/register">Haben Sie kein Konto?</Link>
           </Box>
         </Grid>
 
-        <Grid item xs={10} sm={7} md={6}>
-          {/* <Container>
-            <img src={image} alt="img" />
-          </Container> */}
+        <Grid item xs={12} sm={10} md={6} lg={6}>
+          <Container>
+            <img
+              src={myImage2}
+              alt="myImage"
+              style={{
+               
+                width: "100%", // Image takes the full width of the container
+                height: "38vh", // Maintain aspect ratio
+               display: "block", // Remove inline alignment
+                margin: "auto",
+              }}
+               
+             //xs={2}
+            />
+          </Container>
         </Grid>
       </Grid>
     </Container>

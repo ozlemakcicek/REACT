@@ -51,7 +51,7 @@ const useBlogCalls = () => {
 
 
   const postNewBlog=async(values)=>{
-  dispatch(fetchStart)
+  dispatch(fetchStart())
   console.log(values);
   try {
    const {data}= await axiosWithToken.post(`api/blogs/`, values,)

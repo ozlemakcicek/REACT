@@ -18,7 +18,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
   const navigate=useNavigate()
   
   return (
-    <Form>
+    <Form >
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <TextField
           label="Email"
@@ -31,9 +31,10 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           onBlur={handleBlur}
           helperText={touched.email && errors.email}
           error={touched.email && Boolean(errors.email)}
+          required
         />
         <TextField
-          label="password"
+          label="Password"
           name="password"
           id="password"
           type="password"
@@ -43,6 +44,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
           onBlur={handleBlur}
           helperText={touched.password && errors.password}
           error={touched.password && Boolean(errors.password)}
+          required
         />
         <Button
           variant="contained"
